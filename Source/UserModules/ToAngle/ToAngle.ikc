@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<group name="ToAngle" description="Calculates angle between origin and blob point">
+
+<description type="text">
+	Calculates angle between origin and blob point
+</description>
+
+<example description="A simple example">
+<module
+	class="ToAngle"
+	name="ToAngle"
+/>
+</example>
+
+<input name="INPUT" description="The input matrix of points" />
+<input name="ORIGIN" description="Origin input point, an array of two intergers" />
+<output name="OUTPUT" description="The angle between origin and blob" size_x="1" size_y="1"/>
+
+<module class="ToAngle" />
+
+<author>
+	<name>grupp 12</name>
+	<email>placeholder</email>
+	<affiliation>Lund University</affiliation>
+	<homepage>github repo</homepage>
+</author>
+
+<files>
+	<file>ToAngle.h</file>
+	<file>ToAngle.cc</file>
+	<file>ToAngle.ikc</file>
+</files>
+
+</group>
