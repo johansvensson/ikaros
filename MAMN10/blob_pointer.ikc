@@ -69,6 +69,11 @@
       data = "0.5 1"
     />
 
+    <module
+        class = "ToAngle"
+        name = "ToAngle"
+    />
+
     <connection sourcemodule="Kinect" source="DEPTH" targetmodule="Scale" target="INPUT" />
 
     <connection sourcemodule = "Kinect" source = "DEPTH" targetmodule = "DepthHistogram" target = "INPUT" />
@@ -89,10 +94,12 @@
 
     <connection sourcemodule = "Tilt" source = "OUTPUT" targetmodule = "Kinect" target = "TILT" />
 
+    <connection sourcemodule = "ToLine" source = "OUTPUT" targetmodule = "ToAngle" target = "INPUT" />
+
     <view name="Depth">
         <object class="Image" type="fire" title="Detection" module = "DepthBlobList" source = "SMOOTHED" x="0" y="0" w="3" h="3" />
         <object class="Circle" radius="0.1" module = "DepthBlobList" source = "MAXIMA" x="0" y="0" w="3" h="3" />
-        <object class="Table" module="ToLine" source="OUTPUT" w="3" h="3"/>
+        <object class="Table" module="ToAngle" source="OUTPUT" w="3" h="3"/>
         <object class="Path" module="ToLine" source="OUTPUT" x="0" y="0" w="3" h="3" />
     </view>
 
