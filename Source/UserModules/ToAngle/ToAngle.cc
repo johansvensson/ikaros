@@ -1,5 +1,5 @@
 #include "ToAngle.h"
-#include "Math.h"
+#include <math.h>
 
 void ToAnge::Init()
 {
