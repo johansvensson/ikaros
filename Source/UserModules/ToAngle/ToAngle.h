@@ -11,7 +11,6 @@ public:
 	static Module * Create(Parameter * p) { return new ToAngle(p); }
 
 	ToAngle(Parameter * p) : Module(p) {}
-	virtual ~ToAngle();
 
 	void Init();
 	void Tick();
