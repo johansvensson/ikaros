@@ -13,9 +13,8 @@
 />
 </example>
 
-<input name="INPUT" description="The input matrix of points" />
-<input name="ORIGIN" description="Origin input point, an array of two intergers" />
-<output name="OUTPUT" description="The angle between origin and blob" size_x="1" size_y="1"/>
+<input name="INPUT" description="The input array of 2 points" size_x="4"/>
+<output name="OUTPUT" description="The angle between origin and blob" size_x="1"/>
 
 <module class="ToAngle" />
 
