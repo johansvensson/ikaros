@@ -14,8 +14,8 @@ public:
 
 	void Init();
 	void Tick();
-	float * output;
-	float * input_array;
+	float ** output;
+	float ** input;
 
 	};
 
