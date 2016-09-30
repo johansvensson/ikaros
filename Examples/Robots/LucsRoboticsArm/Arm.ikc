@@ -59,6 +59,12 @@
 		amplitude	=	"0.0"
 		shift		=	"150"
 	/>
+  <module
+    class		=	"Constant"
+    name		=	"Torque_limit"
+    data    = "0.5"
+  />
+
 
 	<!-- Order is important -->
 	<connection sourcemodule  = "GoalPosition3" source  = "OUTPUT" targetmodule	 = "Dynamixel" target  = "GOAL_POSITION" />
@@ -69,7 +75,9 @@
 	<connection sourcemodule  = "Speed" source  = "OUTPUT" targetmodule	 = "Dynamixel" target  = "MOVING_SPEED" />
 	<connection sourcemodule  = "Speed" source  = "OUTPUT" targetmodule	 = "Dynamixel" target  = "MOVING_SPEED" />
 
-
+  <connection sourcemodule  = "Torque_limit" source  = "OUTPUT" targetmodule	 = "Dynamixel" target  = "TORQUE_LIMIT" />
+	<connection sourcemodule  = "Torque_limit" source  = "OUTPUT" targetmodule	 = "Dynamixel" target  = "TORQUE_LIMIT" />
+	<connection sourcemodule  = "Torque_limit" source  = "OUTPUT" targetmodule	 = "Dynamixel" target  = "TORQUE_LIMIT" />
 
 
 	<view name = "Lucs Robotic Arm" object_size = "50" >
