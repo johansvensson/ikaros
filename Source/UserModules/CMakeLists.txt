@@ -5,6 +5,7 @@ add_subdirectory(MyModule)
 add_subdirectory(BlobChooser)
 add_subdirectory(ToLineCombination)
 add_subdirectory(ToAngle)
+add_subdirectory(VarAngFreq)
 
 
 set(SOURCE ${SOURCE} PARENT_SCOPE)

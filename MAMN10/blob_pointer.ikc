@@ -17,11 +17,11 @@
         mode    = "mm"
     />
 
-    <module
+    <!--<module
         class = "DepthHistogram"
         name = "DepthHistogram"
         filter = "yes"
-    />
+    />-->
 
     <module
         class 			= "Constant"
@@ -53,15 +53,15 @@
         comment = "This module could be removed if Image-object allowed scaling."
     />
 
-    <module
+    <!--<module
         class = "Multiply"
         name = "Multiply"
-    />
+    />-->
 
-    <module
+    <!--<module
         class = "DepthSegmentation"
         name = "DepthSegmentation"
-    />
+    />-->
 
     <module
         class = "BlobChooser"
@@ -76,7 +76,7 @@
     <module
       class = "Constant"
       name = "Origin"
-      data = "0.5 1.0"
+      data = "0.5 1.4"
     />
 
     <module
@@ -100,12 +100,12 @@
 
     <connection sourcemodule="Kinect" source="DEPTH" targetmodule="Scale" target="INPUT" />
 
-    <connection sourcemodule = "Kinect" source = "DEPTH" targetmodule = "DepthHistogram" target = "INPUT" />
+    <!--<connection sourcemodule = "Kinect" source = "DEPTH" targetmodule = "DepthHistogram" target = "INPUT" />
     <connection sourcemodule = "Kinect" source = "DEPTH" targetmodule = "DepthSegmentation" target = "INPUT" />
 
     <connection sourcemodule = "DepthHistogram" source = "OBJECT" targetmodule = "DepthSegmentation" target = "OBJECT" />
     <connection sourcemodule = "DepthSegmentation" source = "OUTPUT" targetmodule = "Multiply" target = "INPUT1" />
-    <connection sourcemodule = "Kinect" source = "DEPTH" targetmodule = "Multiply" target = "INPUT2" />
+    <connection sourcemodule = "Kinect" source = "DEPTH" targetmodule = "Multiply" target = "INPUT2" />-->
 
     <connection sourcemodule = "Position" source = "OUTPUT" targetmodule = "DepthBlobList" target = "POSITION" />
 
@@ -122,14 +122,14 @@
 
     <connection sourcemodule = "sub" source = "OUTPUT" targetmodule = "Dynamixel" target = "GOAL_POSITION" />
 
-    <view name="Depth">
+    <!--<view name="Depth">
         <object class="Image" type="fire" title="Detection" module = "DepthBlobList" source = "SMOOTHED" x="0" y="0" w="3" h="3" />
         <object class="Circle" radius="0.1" module = "DepthBlobList" source = "MAXIMA" x="0" y="0" w="3" h="3" />
         <object class="Table" module="ToAngle" source="OUTPUT" w="3" h="3"/>
         <object class="Path" module="ToLine" source="OUTPUT" x="0" y="0" w="3" h="3" />
-    </view>
+    </view>-->
 
-    <view name="Grid">
+    <!--<view name="Grid">
         <object class="Grid" type="fire" name="Grid" module = "DepthBlobList" source = "GRID" x="0" y="0" w="6" h="6" />
-    </view>
+    </view>-->
 </group>
