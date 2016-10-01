@@ -76,13 +76,27 @@
     <module
       class = "Constant"
       name = "Origin"
-      data = "0.7 1.3"
+      data = "0.5 1.0"
     />
 
     <module
         class = "ToAngle"
         name = "ToAngle"
     />
+
+    <module
+        class = "Constant"
+        name = "degrees180"
+        data = "180.0"
+    />
+
+    <module
+      class = "Subtract"
+      name = "sub"
+    />
+
+    <connection sourcemodule="degrees180" source="OUTPUT" targetmodule="sub" target="INPUT1"/>
+    <connection sourcemodule="ToAngle" source="OUTPUT" targetmodule="sub" target="INPUT2" />
 
     <connection sourcemodule="Kinect" source="DEPTH" targetmodule="Scale" target="INPUT" />
 
@@ -106,7 +120,7 @@
 
     <connection sourcemodule = "ToLine" source = "OUTPUT" targetmodule = "ToAngle" target = "INPUT" />
 
-    <connection sourcemodule = "ToAngle" source = "OUTPUT" targetmodule = "Dynamixel" target = "GOAL_POSITION" />
+    <connection sourcemodule = "sub" source = "OUTPUT" targetmodule = "Dynamixel" target = "GOAL_POSITION" />
 
     <view name="Depth">
         <object class="Image" type="fire" title="Detection" module = "DepthBlobList" source = "SMOOTHED" x="0" y="0" w="3" h="3" />
