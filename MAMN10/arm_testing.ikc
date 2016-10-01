@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+
+<group>
+
+    <module
+      class		 = "Dynamixel"
+      name		 = "Dynamixel"
+      device   	 = "/dev/ttyUSB0"
+      index_mode 	 = "indirect"
+      servo_id	 = "1 2 3"
+      angle_unit 	 = "degrees"
+    />
+
+
+    <module
+        class = "Constant"
+        name = "Degrees1"
+        data = "190.0"
+    />
+
+    <module
+        class = "Constant"
+        name = "Degrees2"
+        data = "190.0"
+    />
+
+    <module
+        class = "Constant"
+        name = "Degrees3"
+        data = "190.0"
+    />
+
+    <module
+        class = "Constant"
+        name = "Speed"
+        data = "0 0 0"
+    />
+
+    <module
+        class = "FunctionGenerator"
+        name = "sin"
+        type = "sin"
+        frequency = "0.0114"
+        offset = "170"
+        amplitude = "80"
+        shift = "0.1"
+    />
+
+    <connection sourcemodule = "Speed" source = "OUTPUT" targetmodule = "Dynamixel" target = "GOAL_ACCELERATION" />
+
+    <connection sourcemodule = "sin" source = "OUTPUT" targetmodule = "Dynamixel" target = "GOAL_POSITION" />
+    <connection sourcemodule = "sin" source = "OUTPUT" targetmodule = "Dynamixel" target = "GOAL_POSITION" />
+    <connection sourcemodule = "sin" source = "OUTPUT" targetmodule = "Dynamixel" target = "GOAL_POSITION" />
+
+
+
+    <view name="Depth">
+        <object class="Slider" module="Degrees1" parameter="data" max="360.0" min="0" h="3" x="1"/>
+        <object class="Slider" module="Degrees2" parameter="data" max="360.0" min="0" h="3" x="2"/>
+        <object class="Slider" module="Degrees3" parameter="data" max="360.0" min="0" h="3" x="3"/>
+    </view>
+</group>
