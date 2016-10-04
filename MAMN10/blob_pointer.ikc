@@ -95,6 +95,17 @@
       name = "sub"
     />
 
+    <module
+      class = "VarAngFreq"
+      name = "VarAngFreq"
+    />
+
+    <module
+        class = "Constant"
+        name = "Speed"
+        data = "0.1"
+    />
+
     <connection sourcemodule="degrees180" source="OUTPUT" targetmodule="sub" target="INPUT1"/>
     <connection sourcemodule="ToAngle" source="OUTPUT" targetmodule="sub" target="INPUT2" />
 
@@ -120,14 +131,21 @@
 
     <connection sourcemodule = "ToLine" source = "OUTPUT" targetmodule = "ToAngle" target = "INPUT" />
 
-    <connection sourcemodule = "sub" source = "OUTPUT" targetmodule = "Dynamixel" target = "GOAL_POSITION" />
+    <connection sourcemodule = "Dynamixel" source = "FEEDBACK_PRESENT_POSITION" targetmodule = "VarAngFreq" target = "FROM" />
+    <connection sourcemodule = "sub" source = "OUTPUT" targetmodule = "VarAngFreq" target = "TO" />
 
-    <!--<view name="Depth">
+
+    <connection sourcemodule = "ToAngle" source = "OUTPUT" targetmodule = "Dynamixel" target = "GOAL_POSITION" />
+    <connection sourcemodule = "Speed" source = "OUTPUT" targetmodule = "Dynamixel" target = "MOVING_SPEED" />
+
+    <view name="Depth">
         <object class="Image" type="fire" title="Detection" module = "DepthBlobList" source = "SMOOTHED" x="0" y="0" w="3" h="3" />
         <object class="Circle" radius="0.1" module = "DepthBlobList" source = "MAXIMA" x="0" y="0" w="3" h="3" />
-        <object class="Table" module="ToAngle" source="OUTPUT" w="3" h="3"/>
+        <object class="Table" module="Dynamixel" source = "FEEDBACK_PRESENT_POSITION" y="0"/>
+        <object class="Table" module="sub" source = "OUTPUT" y="1"/>
+        <object class="Table" module="VarAngFreq" source = "OUTPUT" y="2"/>
         <object class="Path" module="ToLine" source="OUTPUT" x="0" y="0" w="3" h="3" />
-    </view>-->
+    </view>
 
     <!--<view name="Grid">
         <object class="Grid" type="fire" name="Grid" module = "DepthBlobList" source = "GRID" x="0" y="0" w="6" h="6" />

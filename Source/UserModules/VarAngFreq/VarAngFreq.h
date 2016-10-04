@@ -17,6 +17,7 @@ public:
 	float ** from;
 	float ** to;
 	float ** inc;
+	float i;
 
 	};
 
