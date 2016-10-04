@@ -17,12 +17,6 @@
         mode    = "mm"
     />
 
-    <!--<module
-        class = "DepthHistogram"
-        name = "DepthHistogram"
-        filter = "yes"
-    />-->
-
     <module
         class 			= "Constant"
         name 			= "Position"
@@ -53,16 +47,6 @@
         comment = "This module could be removed if Image-object allowed scaling."
     />
 
-    <!--<module
-        class = "Multiply"
-        name = "Multiply"
-    />-->
-
-    <!--<module
-        class = "DepthSegmentation"
-        name = "DepthSegmentation"
-    />-->
-
     <module
         class = "BlobChooser"
         name = "BlobChooser"
@@ -76,7 +60,7 @@
     <module
       class = "Constant"
       name = "Origin"
-      data = "0.5 1.3"
+      data = "0.4 1.1"
     />
 
     <module
@@ -91,6 +75,12 @@
     />
 
     <module
+        class = "Constant"
+        name = "degrees360"
+        data = "360.0"
+    />
+
+    <module
       class = "Subtract"
       name = "sub"
     />
@@ -98,8 +88,30 @@
     <module
         class = "Constant"
         name = "Speed"
-        data = "0.04"
+        data = "0.5"
     />
+
+    <module
+        class = "Abs"
+        name = "Abs"
+    />
+
+    <module
+        class = "Subtract"
+        name = "Subtract"
+    />
+
+    <module
+        class = "Divide"
+        name = "Divide"
+    />
+
+    <connection sourcemodule="Dynamixel" source="FEEDBACK_PRESENT_POSITION" targetmodule="Subtract" target="INPUT1"/>
+    <connection sourcemodule="sub" source="OUTPUT" targetmodule="Subtract" target="INPUT2"/>
+    <connection sourcemodule="Subtract" source="OUTPUT" targetmodule="Abs" target="INPUT"/>
+    <connection sourcemodule="Abs" source="OUTPUT" targetmodule="Divide" target="INPUT1"/>
+    <connection sourcemodule="degrees360" source="OUTPUT" targetmodule="Divide" target="INPUT2"/>
+
 
     <connection sourcemodule="degrees180" source="OUTPUT" targetmodule="sub" target="INPUT1"/>
     <connection sourcemodule="ToAngle" source="OUTPUT" targetmodule="sub" target="INPUT2" />
@@ -127,13 +139,18 @@
     <connection sourcemodule = "ToLine" source = "OUTPUT" targetmodule = "ToAngle" target = "INPUT" />
 
     <connection sourcemodule = "sub" source = "OUTPUT" targetmodule = "Dynamixel" target = "GOAL_POSITION" />
-    <connection sourcemodule = "Speed" source = "OUTPUT" targetmodule = "Dynamixel" target = "MOVING_SPEED" />
+    <connection sourcemodule = "Divide" source = "OUTPUT" targetmodule = "Dynamixel" target = "MOVING_SPEED" />
 
     <view name="Depth">
         <object class="Image" type="fire" title="Detection" module = "DepthBlobList" source = "SMOOTHED" x="0" y="0" w="3" h="3" />
         <object class="Circle" radius="0.1" module = "DepthBlobList" source = "MAXIMA" x="0" y="0" w="3" h="3" />
-        <object class="Table" module="ToAngle" source = "OUTPUT" y="0"/>
+
         <object class="Path" module="ToLine" source="OUTPUT" x="0" y="0" w="3" h="3" />
+
+        <object class="Table" module="Dynamixel" source = "FEEDBACK_PRESENT_POSITION" y="0"/>
+        <object class="Table" module="sub" source="OUTPUT" y="1"/>
+        <object class="Table" module="Dynamixel" source = "FEEDBACK_PRESENT_SPEED" y="2"/>
+
     </view>
 
     <!--<view name="Grid">
