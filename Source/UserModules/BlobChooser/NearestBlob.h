@@ -21,18 +21,18 @@
 //
 
 
-#ifndef BlobChooser_
-#define BlobChooser_
+#ifndef NearestBlob_
+#define NearestBlob_
 
 #include "IKAROS.h"
 
-class BlobChooser: public Module
+class NearestBlob: public Module
 {
 public:
-    static Module * Create(Parameter * p) { return new BlobChooser(p); }
+    static Module * Create(Parameter * p) { return new NearestBlob(p); }
 
-    BlobChooser(Parameter * p) : Module(p) {}
-    virtual ~BlobChooser();
+    NearestBlob(Parameter * p) : Module(p) {}
+    virtual ~NearestBlob();
 
     void 		Init();
     void 		Tick();

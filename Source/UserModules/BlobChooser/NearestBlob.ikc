@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<group name="BlobChooser" description="minimal example module">
+<group name="NearestBlob" description="minimal example module">
 
 	<description type="text">
 		Minimal module that can be used as a start for a new module.
@@ -12,8 +12,8 @@
 
 	<example description="A simple example">
 		<module
-			class="BlobChooser"
-			name="BlobChooser"
+			class="NearestBlob"
+			name="NearestBlob"
 		/>
 	</example>
 
@@ -21,7 +21,7 @@
   <input name="INPUT" description="Input matrix of (x,y) coordinates" />
   <output name="OUTPUT" description="Output matrix of chosen coordinates" size_set="INPUT" />
 
-	<module class="BlobChooser" />
+	<module class="NearestBlob" />
 
 	<author>
 		<name>Christian Balkenius</name>
@@ -31,9 +31,9 @@
 	</author>
 
    <files>
-   		<file>BlobChooser.h</file>
-   		<file>BlobChooser.cc</file>
-   		<file>BlobChooser.ikc</file>
+   		<file>NearestBlob.h</file>
+   		<file>NearestBlob.cc</file>
+   		<file>NearestBlob.ikc</file>
    </files>
 
 </group>

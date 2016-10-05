@@ -21,12 +21,12 @@
 //
 
 
-#include "BlobChooser.h"
+#include "NearestBlob.h"
 
 using namespace ikaros;
 
 void
-BlobChooser::Init()
+NearestBlob::Init()
 {
   input_matrix = GetInputMatrix("INPUT");
   input_matrix_size_x = GetInputSizeX("INPUT");
@@ -44,13 +44,13 @@ BlobChooser::Init()
   dist = 100.0;
 }
 
-BlobChooser::~BlobChooser()
+NearestBlob::~NearestBlob()
 {
     destroy_matrix(internal_matrix);
 }
 
 void
-BlobChooser::Tick()
+NearestBlob::Tick()
 {
     copy_matrix(internal_matrix, input_matrix, input_matrix_size_x, input_matrix_size_y);
     dist = 100;
@@ -75,4 +75,4 @@ BlobChooser::Tick()
     }
 }
 
-static InitClass init("BlobChooser", &BlobChooser::Create, "Source/UserModules/BlobChooser/");
+static InitClass init("NearestBlob", &NearestBlob::Create, "Source/UserModules/NearestBlob/");
