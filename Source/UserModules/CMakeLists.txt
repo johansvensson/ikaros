@@ -6,6 +6,7 @@ add_subdirectory(NearestBlob)
 add_subdirectory(ToLineCombination)
 add_subdirectory(ToAngle)
 add_subdirectory(VarAngFreq)
+add_subdirectory(WatchRandom)
 
 
 set(SOURCE ${SOURCE} PARENT_SCOPE)
