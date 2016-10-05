@@ -44,8 +44,8 @@
 
 
     <module
-        class = "BlobChooser"
-        name = "BlobChooser"
+        class = "NearestBlob"
+        name = "NearestBlob"
     />
 
     <module
@@ -130,12 +130,12 @@
     <!-- Sends data from Kinect to DepthBlobList-->
     <connection sourcemodule = "Kinect" source = "DEPTH" targetmodule = "DepthBlobList" target = "INPUT" />
 
-    <!--Sends datafrom DepthBlobList to BlobChooser-->
-    <connection sourcemodule = "DepthBlobList" source = "MAXIMA" targetmodule = "BlobChooser" target = "INPUT" />
-        <connection sourcemodule = "Origin" source = "OUTPUT" targetmodule = "BlobChooser" target = "ORIGIN" />
+    <!--Sends datafrom DepthBlobList to NearestBlob-->
+    <connection sourcemodule = "DepthBlobList" source = "MAXIMA" targetmodule = "NearestBlob" target = "INPUT" />
+        <connection sourcemodule = "Origin" source = "OUTPUT" targetmodule = "NearestBlob" target = "ORIGIN" />
 
-    <!--From BlobChooser to Arbiter-->
-    <connection sourcemodule = "BlobChooser" source = "OUTPUT" targetmodule = "Arbiter" target = "INPUT_1" />
+    <!--From NearestBlob to Arbiter-->
+    <connection sourcemodule = "NearestBlob" source = "OUTPUT" targetmodule = "Arbiter" target = "INPUT_1" />
     <connection sourcemodule = "ConstantWeight" source = "OUTPUT" targetmodule = "Arbiter" target = "VALUE_1" />
 
     <!-- When Artiter has seleced a point, send the point to ToLine-->
