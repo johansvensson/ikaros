@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+
+<group name="Movement" description="Calculates point with largest movement">
+
+<description type="text">
+	increments angle
+</description>
+
+<example description="A simple example">
+<module
+	class="Movement"
+	name="Movement"
+/>
+</example>
+
+<input name="INPUT" description="input matrix of (x, y) coordinates" />
+<output name="OUTPUT" description="Output array of point and weight" size_x="2" size_y="1"/>
+
+<module class="Movement" />
+
+<author>
+	<name>grupp 12</name>
+	<email>placeholder</email>
+	<affiliation>Lund University</affiliation>
+	<homepage>github repo</homepage>
+</author>
+
+<files>
+	<file>ToLineCombination.h</file>
+	<file>ToLineCombination.cc</file>
+	<file>ToLineCombination.ikc</file>
+</files>
+
+</group>
