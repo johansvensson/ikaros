@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<group name="WatchRandom" description="Selects a random point from DepthBlobList>
+<group name="WatchRandom" description="Selects a random point from DepthBlobList">
 
 	<description type="text">
 		Minimal module that can be used as a start for a new module.

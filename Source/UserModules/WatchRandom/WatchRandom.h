@@ -44,6 +44,9 @@ public:
 
     float **    internal_matrix;
 
+    int         amount;
+    int         random;
+
 
 };
 

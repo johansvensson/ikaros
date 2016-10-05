@@ -20,8 +20,10 @@
 
 #include "WatchRandom.h"
 #include <stdlib.h>
+#include <iostream>
 
 using namespace ikaros;
+using namespace std;
 
 void
 WatchRandom::Init()
@@ -34,6 +36,8 @@ WatchRandom::Init()
   output_matrix_size_x = GetOutputSizeX("OUTPUT");
   output_matrix_size_y = GetOutputSizeY("OUTPUT");
 
+  amount = 0;
+  random = 0;
 
   internal_matrix = create_matrix(input_matrix_size_x, input_matrix_size_y);
 }
@@ -43,22 +47,28 @@ WatchRandom::~WatchRandom()
     destroy_matrix(internal_matrix);
 }
 
-void
-WatchRandom()
+void WatchRandom::Tick()
 {
     copy_matrix(internal_matrix, input_matrix, input_matrix_size_x, input_matrix_size_y);
     for (int j=0; j<output_matrix_size_y; j++)
         for (int i=0; i<output_matrix_size_x; i++)
-              output_matrix[j][i] = -1;
+              output_matrix[j][i] = -1.0;
 
 /* count the amount of valid points in matrix */
-    int amount = 0;
-    while(internal_matrix[0][amount] != 0){
-      amount++;
+    amount = 0;
+    for (int j=0; j<input_matrix_size_y;j++){
+      if(internal_matrix[j][0] != -1.0){
+        amount++;
+      }
     }
+    // while(internal_matrix[amount][0] != -1.0){
+    //   amount++;
+    // }
 
+    cout << amount;
     /* random int between 0 and amount  */
-    int random = rand() % amount;
+    //int random = (unsigned int)rand() % amount;
+    random = (int)rand()%(amount + 1);
 
 /* Inserting the the random point from internal_matrix to output_matrix */
     output_matrix[0][0] = internal_matrix[random][0];
