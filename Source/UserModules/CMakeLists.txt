@@ -2,7 +2,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 add_subdirectory(MinimalModule)
 add_subdirectory(MyModule)
-add_subdirectory(NearestBlobs)
+add_subdirectory(NearestBlob)
 add_subdirectory(ToLineCombination)
 add_subdirectory(ToAngle)
 add_subdirectory(VarAngFreq)
