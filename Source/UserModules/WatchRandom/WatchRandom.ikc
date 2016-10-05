@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<group name="WatchRandom" description="Selects a random point from DepthBlobList>
+
+	<description type="text">
+		Minimal module that can be used as a start for a new module.
+		Simply change all occurrences of "MinimalModule" to the name of your new module in
+		MinimalModule.cc, MinimalModule.h and MinimalModule.ikc (this file), rename the files, and fill
+		in the new code and documentation. This module is located in the
+		UserModules directory.
+	</description>
+
+	<example description="A simple example">
+		<module
+			class="WatchRandom"
+			name="WatchRandom"
+		/>
+	</example>
+
+	<input name="ORIGIN" description="Input origin coordinates" />
+  <input name="INPUT" description="Input matrix of (x,y) coordinates" />
+  <output name="OUTPUT" description="Output matrix of chosen coordinates" size_set="INPUT" />
+
+	<module class="WatchRandom" />e
+
+	<author>
+		<name>Johan Svensson</name>
+	</author>
+
+   <files>
+   		<file>WatchRandom.h</file>
+   		<file>WatchRandom.cc</file>
+   		<file>WatchRandom.ikc</file>
+   </files>
+
+</group>
