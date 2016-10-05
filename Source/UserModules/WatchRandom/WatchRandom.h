@@ -44,8 +44,10 @@ public:
 
     float **    internal_matrix;
 
-    int         amount;
+    int         tick_counter;
     int         random;
+    float       randx;
+    float       randy;
 
 
 };

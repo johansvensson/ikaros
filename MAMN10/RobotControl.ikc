@@ -73,7 +73,7 @@
     <module
         class = "Constant"
         name = "degrees360"
-        data = "360.0"
+        data = "180"
     />
 
     <module
@@ -169,9 +169,9 @@
 
 
     <connection sourcemodule = "ToLine" source = "OUTPUT" targetmodule = "ToAngle" target = "INPUT" />
+    <connection sourcemodule = "Divide" source = "OUTPUT" targetmodule = "Dynamixel" target = "MOVING_SPEED" delay = "0"/>
+    <connection sourcemodule = "sub" source = "OUTPUT" targetmodule = "Dynamixel" target = "GOAL_POSITION" delay = "2" />
 
-    <connection sourcemodule = "sub" source = "OUTPUT" targetmodule = "Dynamixel" target = "GOAL_POSITION" />
-    <connection sourcemodule = "Divide" source = "OUTPUT" targetmodule = "Dynamixel" target = "MOVING_SPEED" />
 
 <!-- View-realted code below this part-->
     <view name="Depth">

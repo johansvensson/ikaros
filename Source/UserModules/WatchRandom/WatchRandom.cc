@@ -36,8 +36,10 @@ WatchRandom::Init()
   output_matrix_size_x = GetOutputSizeX("OUTPUT");
   output_matrix_size_y = GetOutputSizeY("OUTPUT");
 
-  amount = 0;
+  tick_counter = 0;
   random = 0;
+  randx = 0;
+  randy = 0;
 
   internal_matrix = create_matrix(input_matrix_size_x, input_matrix_size_y);
 }
@@ -53,26 +55,32 @@ void WatchRandom::Tick()
     for (int j=0; j<output_matrix_size_y; j++)
         for (int i=0; i<output_matrix_size_x; i++)
               output_matrix[j][i] = -1.0;
+    tick_counter++;
+    if(tick_counter > 20){
+          tick_counter = 0;
+          /* count the amount of valid points in matrix */
+          int amount = 0;
+          for (int j=0; j<input_matrix_size_y;j++){
+            if(internal_matrix[j][0] != -1.0){
+              amount++;
+            }
+          }
+          /* random int between 0 and amount  */
+          random = (int)rand()%(amount+1);
+          randx = (float)((rand()%100)/100.0);
+          randy = (float)((rand()%100)/100.0);
 
-/* count the amount of valid points in matrix */
-    amount = 0;
-    for (int j=0; j<input_matrix_size_y;j++){
-      if(internal_matrix[j][0] != -1.0){
-        amount++;
-      }
+
     }
-    // while(internal_matrix[amount][0] != -1.0){
-    //   amount++;
-    // }
+    /* Inserting the the random point from internal_matrix to output_matrix */
+    if(internal_matrix[random][0] == -1.0){
+      output_matrix[0][0] = randx;
+      output_matrix[0][1] = randy;
+    } else {
+      output_matrix[0][0] = internal_matrix[random][0];
+      output_matrix[0][1] = internal_matrix[random][1];
+    }
 
-    cout << amount;
-    /* random int between 0 and amount  */
-    //int random = (unsigned int)rand() % amount;
-    random = (int)rand()%(amount + 1);
-
-/* Inserting the the random point from internal_matrix to output_matrix */
-    output_matrix[0][0] = internal_matrix[random][0];
-    output_matrix[0][1] = internal_matrix[random][1];
 
 }
 
