@@ -56,7 +56,7 @@ void WatchRandom::Tick()
         for (int i=0; i<output_matrix_size_x; i++)
               output_matrix[j][i] = -1.0;
     tick_counter++;
-    if(tick_counter > 20){
+    if(tick_counter > 40){
           tick_counter = 0;
           /* count the amount of valid points in matrix */
           int amount = 0;
@@ -75,7 +75,7 @@ void WatchRandom::Tick()
     /* Inserting the the random point from internal_matrix to output_matrix */
     if(internal_matrix[random][0] == -1.0){
       output_matrix[0][0] = randx;
-      output_matrix[0][1] = randy;
+      output_matrix[0][1] = 1.0;
     } else {
       output_matrix[0][0] = internal_matrix[random][0];
       output_matrix[0][1] = internal_matrix[random][1];

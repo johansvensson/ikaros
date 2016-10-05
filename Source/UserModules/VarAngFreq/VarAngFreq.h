@@ -16,8 +16,10 @@ public:
 	void Tick();
 	float ** from;
 	float ** to;
-	float ** inc;
-	float i;
+	float ** speed;
+	float norm;
+	float max;
+	int rest;
 
 	};
 
