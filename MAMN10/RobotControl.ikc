@@ -104,14 +104,26 @@
     <module
      class = "Arbiter"
      name = "Arbiter"
-     no_of_inputs ="1"
+     no_of_inputs ="2"
      />
 
+     <module
+       class = "WatchRandom"
+       name = "WatchRandom"
+       />
+
+<!--Constants just to test the weigths-->
      <module
        class="Constant"
        name="ConstantWeight"
        data="1"
        />
+
+       <module
+         class="Constant"
+         name="ConstantWeight2"
+         data="2"
+         />
 
      <!-- Sets the robot speed-->
     <connection sourcemodule="Dynamixel" source="FEEDBACK_PRESENT_POSITION" targetmodule="Subtract" target="INPUT1"/>
@@ -134,9 +146,17 @@
     <connection sourcemodule = "DepthBlobList" source = "MAXIMA" targetmodule = "NearestBlob" target = "INPUT" />
         <connection sourcemodule = "Origin" source = "OUTPUT" targetmodule = "NearestBlob" target = "ORIGIN" />
 
-    <!--From NearestBlob to Arbiter-->
+        <!-- Sends data from DepthBlobList to WatchRandom-->
+<connection sourcemodule = "DepthBlobList" source = "MAXIMA" targetmodule = "WatchRandom" target = "INPUT" />
+
+
+    <!--Into Arbiter-->
     <connection sourcemodule = "NearestBlob" source = "OUTPUT" targetmodule = "Arbiter" target = "INPUT_1" />
     <connection sourcemodule = "ConstantWeight" source = "OUTPUT" targetmodule = "Arbiter" target = "VALUE_1" />
+
+    <connection sourcemodule = "WatchRandom" source = "OUTPUT" targetmodule = "Arbiter" target = "INPUT_2" />
+    <connection sourcemodule = "ConstantWeight2" source = "OUTPUT" targetmodule = "Arbiter" target = "VALUE_2" />
+
 
     <!-- When Artiter has seleced a point, send the point to ToLine-->
   <connection sourcemodule = "Arbiter" source = "OUTPUT" targetmodule = "ToLine" target = "INPUT" />
