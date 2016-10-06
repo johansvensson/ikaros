@@ -1,76 +1,15 @@
-function Slider(p)
+function DropDownMenu(p)
 {
 	var that = this;
-    
-    function none()
-    {
-    }
-    
-    function drag_start(event)
-    {
-        event.preventDefault();
-        that.button.setAttribute("fill", "#666");
-        that.dragged = true;
-        document.onmouseup = drag_end;
-        document.onmousemove = drag;
-    }
-    
-    function drag_end(event)
-    {
-        that.button.setAttribute("fill", "gray");
-        that.dragged = false;
-        document.onmouseup = null;
-        document.onmousemove = null;    
-    }
-    
-    function drag(event)
-    {
-        event.preventDefault();
-        var h = that.height-40;
-        var val = (event.clientY-40-that.y)/h;
-        if(val < 0)
-            val = 0;
-        if(val > 1)
-            val = 1;
-        if(that.steps > 0)
-            val = lookupStepValue(val, that.steptable)
-        that.button.setAttribute("y", 20+val*h+4);
-        var value = that.min+(that.max-that.min)*(that.invert ? val : 1-val);
-        get("/control/"+that.module+"/"+that.parameter+"/"+that.xindex+"/"+that.yindex+"/"+value, none);
-    }
 
-    function makeStepTable(numsteps)
-    {
-        stepsize = 1.0/numsteps;
-        radix = stepsize/2.0;
-        retval = [];
-        retval.push([0, radix, 0]);
-        min = radix;
-        while(min < 1.0-radix)
-        {
-            retval.push([min, min+stepsize, min+radix]);
-            min += stepsize;
-        }
-        retval.push([1.0-radix, 1.0, 1.0]);
-        return retval;
-    }
-
-    function lookupStepValue(val, table)
-    {
-        for(var i=0; i<table.length; i++)
-            if(val >= table[i][0] && val<table[i][1])
-                return table[i][2];
-        return 1.0;
-    }
-
-    
     var cx = p.width/2;
     
     this.module = p.module;
     this.parameter = p.parameter;
     
     p.opaque = true;
-    this.graph = new Graph(p, 'Slider');
+    this.graph = new Graph(p, 'DropDownMenu');
+    
     this.x = p.x;
     this.y = p.y;	
     this.width = p.width;
@@ -123,7 +62,7 @@ function Slider(p)
 
 
 
-Slider.prototype.Update = function(data)
+DropDownMenu.prototype.Update = function(data)
 {
     if(this.dragged)
         return;
