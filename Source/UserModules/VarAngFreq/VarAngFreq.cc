@@ -25,7 +25,7 @@ void VarAngFreq::Tick() {
     }
     cout << rest;
     if(rest > 0  && fabs(v1 - v2) > 10.0){
-      speed[0][0] = speed[0][0] + 0.01;
+      speed[0][0] = speed[0][0] + speed[0][0]/5.0;
       rest--;
     } else {
       float temp = fabs(v1 - v2)/norm;

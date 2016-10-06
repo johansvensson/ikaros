@@ -56,7 +56,7 @@ void WatchRandom::Tick()
         for (int i=0; i<output_matrix_size_x; i++)
               output_matrix[j][i] = -1.0;
     tick_counter++;
-    if(tick_counter > 40){
+    if(tick_counter > (rand()%(60-30+1) + 30)){
           tick_counter = 0;
           /* count the amount of valid points in matrix */
           int amount = 0;

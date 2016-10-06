@@ -7,6 +7,7 @@ add_subdirectory(ToLineCombination)
 add_subdirectory(ToAngle)
 add_subdirectory(VarAngFreq)
 add_subdirectory(WatchRandom)
+add_subdirectory(LowResBlobList)
 
 
 set(SOURCE ${SOURCE} PARENT_SCOPE)
