@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+<group name="SpeedFunction" description="increments angle">
+
+<description type="text">
+	increments angle
+</description>
+
+<example description="A simple example">
+<module
+	class="SpeedFunction"
+	name="SpeedFunction"
+/>
+</example>
+
+<input name="FROM" description="angle from" />
+<input name="TO" description="angle to" />
+<parameter name="norm" type="float" default="360.0" description="What norm to use when deciding speed"/>
+<parameter name="max" type="float" default="0.1" description="Maximum speed"/>
+<output name="OUTPUT" description="output inc" size_x="1" size_y="1"/>
+
+<module class="SpeedFunction" />
+
+<author>
+	<name>grupp 12</name>
+	<email>placeholder</email>
+	<affiliation>Lund University</affiliation>
+	<homepage>github repo</homepage>
+</author>
+
+<files>
+	<file>ToLineCombination.h</file>
+	<file>ToLineCombination.cc</file>
+	<file>ToLineCombination.ikc</file>
+</files>
+
+</group>

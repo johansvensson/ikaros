@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<group title="face_detector_test">
+
+	<module
+		class="Constant"
+		name="v1"
+		data="90.0"
+	/>
+
+	<module
+			class="Constant"
+			name="v2"
+			data="180.0"
+	/>
+
+	<module
+			class="SpeedFunction"
+			name="speed"
+	/>
+
+
+	<connection sourcemodule="v1" source="OUTPUT" targetmodule="speed" target="FROM" />
+
+	<connection sourcemodule="v2" source="OUTPUT" targetmodule="speed" target="TO" />
+
+	<view name="Speed View">
+		<object class="Plot" module = "speed" source = "OUTPUT" x="0" y="0" max="1"/>
+
+	</view>
+</group>
