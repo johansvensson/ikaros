@@ -36,12 +36,14 @@ NearestBlob::Init()
   output_matrix_size_x = GetOutputSizeX("OUTPUT");
   output_matrix_size_y = GetOutputSizeY("OUTPUT");
 
+  weight = GetOutputMatrix("WEIGHT");
+
   internal_matrix = create_matrix(input_matrix_size_x, input_matrix_size_y);
   p1 = create_array(2);
 
   origin = GetInputArray("ORIGIN");
 
-  dist = 100.0;
+  Bind(maxdist, "maxdist");
 }
 
 NearestBlob::~NearestBlob()
@@ -53,7 +55,7 @@ void
 NearestBlob::Tick()
 {
     copy_matrix(internal_matrix, input_matrix, input_matrix_size_x, input_matrix_size_y);
-    dist = 100;
+    float dist = 100.0;
     for (int j=0; j<output_matrix_size_y; j++)
         for (int i=0; i<output_matrix_size_x; i++)
               output_matrix[j][i] = -1;
@@ -62,17 +64,27 @@ NearestBlob::Tick()
         p1[0] = internal_matrix[j][0];
         p1[1] = internal_matrix[j][1];
 
-        if(p1[0] != -1){if(sqrt(
+        float tempDist = sqrt(
             origin[0]*origin[0] +
             origin[1]*origin[1] +
             p1[0]*p1[0] +
             p1[1]*p1[1]
-          ) < dist){
+          );
+
+        if(p1[0] != -1.0){
+          if(tempDist < dist){
+            dist = tempDist;
             output_matrix[0][0] = p1[0];
             output_matrix[0][1] = p1[1];
           }
         }
     }
+    if(dist/maxdist<1.0){
+      weight[0][0] = dist/maxdist;
+    } else {
+      weight[0][0] = 0.0;
+    }
+
 }
 
 static InitClass init("NearestBlob", &NearestBlob::Create, "Source/UserModules/NearestBlob/");

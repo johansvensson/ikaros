@@ -19,7 +19,11 @@
 
 	<input name="ORIGIN" description="Input origin coordinates" />
   <input name="INPUT" description="Input matrix of (x,y) coordinates" />
+
+	<parameter name="maxdist" type="float" default="1.0" description="max distance 0...1" />
+
   <output name="OUTPUT" description="Output matrix of chosen coordinates" size_set="INPUT" />
+	<output name="WEIGHT" description="Weight between 0.0 and 1.0 for competing with other modules" size_x="1" size_y="1"/>
 
 	<module class="NearestBlob" />
 

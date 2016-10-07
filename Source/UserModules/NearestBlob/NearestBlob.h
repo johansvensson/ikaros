@@ -47,11 +47,13 @@ public:
     int         output_matrix_size_x;
     int         output_matrix_size_y;
 
+    float **    weight;
+
     float **    internal_matrix;
 
     float *     p1;
 
-    float       dist;
+    float       maxdist;
 };
 
 #endif

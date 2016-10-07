@@ -9,6 +9,7 @@
       index_mode 	 = "indirect"
       servo_id	 = "1"
       angle_unit 	 = "degrees"
+      delay = "1"
     />
 
     <module
@@ -23,7 +24,7 @@
         data = "
                     1	0	0   0;
                     0   1   0   0;
-                    0	0   1	3000;
+                    0	0   1	2200;
                     0	0	0   1"
     />
 
@@ -41,6 +42,7 @@
     <module
         class = "NearestBlob"
         name = "NearestBlob"
+        maxdist = "2.0"
     />
 
     <module
@@ -82,23 +84,18 @@
        />
 
 <!--Constants just to test the weigths-->
-     <module
-       class="Constant"
-       name="ConstantWeight"
-       data="3"
-       />
 
        <module
          class="Constant"
          name="ConstantWeight2"
-         data="4"
+         data="0.2"
          />
 
       <module
         class="VarAngFreq"
         name="VarSpd"
-        norm="180.0"
-        max="0.1"
+        norm="360.0"
+        max="0.20"
       />
 
     <connection sourcemodule="Dynamixel" source="FEEDBACK_PRESENT_POSITION" targetmodule="VarSpd" target="FROM" delay="0"/>
@@ -122,7 +119,7 @@
 <connection sourcemodule = "LowResBlobList" source = "MAXIMA" targetmodule = "WatchRandom" target = "INPUT" />
     <!--Into Arbiter-->
     <connection sourcemodule = "NearestBlob" source = "OUTPUT" targetmodule = "Arbiter" target = "INPUT_1" />
-    <connection sourcemodule = "ConstantWeight" source = "OUTPUT" targetmodule = "Arbiter" target = "VALUE_1" />
+    <connection sourcemodule = "NearestBlob" source = "WEIGHT" targetmodule = "Arbiter" target = "VALUE_1" />
 
     <connection sourcemodule = "WatchRandom" source = "OUTPUT" targetmodule = "Arbiter" target = "INPUT_2" />
     <connection sourcemodule = "ConstantWeight2" source = "OUTPUT" targetmodule = "Arbiter" target = "VALUE_2" />
@@ -150,7 +147,9 @@
 
         <object class="Path" module="ToLine" source="OUTPUT" x="0" y="0" w="3" h="3" />
         <object class="Slider" module="Position" parameter="data" title=" " select="11" x="3" h="3" max="4000.0"/>
-        <object class="Table" module="Position" source="OUTPUT" w="3"/>
+        <object class="Table" module="NearestBlob" source="WEIGHT" w="3"/>
+        <object class="Plot" module="VarSpd" source="OUTPUT" y="3" w="3" max="0.15"/>
+        <object class="Plot" module="Dynamixel" source="FEEDBACK_PRESENT_SPEED" y="4" w="3"/>
 
       <!--  <object class="Table" module="Dynamixel" source = "FEEDBACK_PRESENT_POSITION" y="0"/>
         <object class="Table" module="CorrectedAngle" source="OUTPUT" y="1"/>
