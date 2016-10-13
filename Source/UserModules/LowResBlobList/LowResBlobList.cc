@@ -211,7 +211,6 @@ LowResBlobList::Tick()
                     maxima[c][0] = float(i)/float(grid_size_x);
                     maxima[c][1] = float(j)/float(grid_size_y);
 
-                    printf("local maximum: %f %f @ %.4f\n", maxima[c][0], maxima[c][1], smoothed[j][i]);
 
                     c++;
                 }
@@ -220,7 +219,6 @@ LowResBlobList::Tick()
 
 //    printf("Min = %f, max = %f\n", min(grid, 25, 25), max(grid, 25, 25));
 
-    printf("-----------------\n\n");
 
     reset_matrix(output, 17, 10);
 
