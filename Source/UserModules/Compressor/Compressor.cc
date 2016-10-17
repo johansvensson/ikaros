@@ -51,3 +51,29 @@ Compressor::~Compressor()
 {
     destroy_matrix(internal_matrix);
 }
+
+void
+Compressor::Tick()
+{
+  // DISCLAIMER!
+  // I have harcoded the input-depth-matix as 640x480 px, and
+  // viewing angles   45 deg vertical & 58 deg horizontal.
+  // If the input from the kincet-module is something else, this code needs to be modified.
+
+copy_matrix(internal_matrix, input_matrix, input_matrix_size_x, input_matrix_size_y);
+
+//Step the pixel-amount in the input_matrix
+  for(int i = 0; i < input_matrix_size_x; i++){
+    for(int j = 0; j < input_matrix_size_y; j++){
+
+      //Calculate a mid-value for all the pixels in the small part of the matrix
+
+
+
+    }
+  }
+
+}
+
+
+static InitClass init("Compressor", &Compressor::Create, "Source/UserModules/Compressor/");
