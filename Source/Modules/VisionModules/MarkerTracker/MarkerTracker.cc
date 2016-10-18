@@ -313,7 +313,7 @@ MarkerTracker::Init()
 	
 	input = GetInputMatrix("INPUT");
 	
-	max_positions = GetOutputSizeY("POS");
+	//max_positions = GetOutputSizeY("POS");
 	
 	size_x = GetInputSizeX("INPUT");
 	size_y = GetInputSizeY("INPUT");
