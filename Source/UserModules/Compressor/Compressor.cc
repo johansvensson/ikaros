@@ -67,8 +67,8 @@ Compressor::Tick()
   int out_x = 0;
   int out_y = 0;
 
-  while (i < 640) {
-    while (j < 480){
+  while (i < 480) {
+    while (j < 640){
       // std::cout << "i: ";
       // std::cout << i;
       // std::cout << "  ";
@@ -78,16 +78,16 @@ Compressor::Tick()
       //std::cout << "\n";
       // Submatrix-work inside here
       float min = 999.0;
-      for(int k=i; k < i + 11 && k < 640; k++){
-        for(int l=j; l < j+11 && l < 480; l++){
+      for(int k=i; k < i + 11 && k < 480; k++){
+        for(int l=j; l < j+11 && l < 640; l++){
           // std::cout << "k: ";
           // std::cout << k;
           // std::cout << "  ";
           // std::cout << "l: ";
           // std::cout << l;
             //    std::cout << "\n";
-          if (internal_matrix[l][k] < min){
-           min = internal_matrix[l][k];
+          if (internal_matrix[k][l] < min){
+           min = internal_matrix[k][l];
           }
         }
       }
