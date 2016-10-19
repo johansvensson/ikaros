@@ -42,7 +42,7 @@ public:
     int         input_matrix_size_y;
 
     float **    output_matrix;
-
+    float **    background_matrix;
     float **    internal_matrix;
 
 };
