@@ -49,51 +49,7 @@ Compressor::Init()
 
   // Background stuff
   background_matrix = create_matrix(58, 45);
-  // DISCLAIMER!
-  // I have harcoded the input-depth-matix as 640x480 px, and
-  // viewing angles   45 deg vertical & 58 deg horizontal.
-  // If the input from the kincet-module is something else, this code needs to be modified.
-  for(int r = 0; r < 30 ; r++){
-    copy_matrix(internal_matrix, input_matrix, input_matrix_size_x, input_matrix_size_y);
 
-    //Step the pixel-amount in the input_matrix
-    int i = 0;
-    int j = 0;
-    int out_x = 0;
-    int out_y = 0;
-
-    while (i < 480) {
-      while (j < 640){
-        // Submatrix-work inside here
-        float min = 999.0;
-        for(int k=i; k < i + 11 && k < 480; k++){
-          for(int l=j; l < j+11 && l < 640; l++){
-            // std::cout << "k: ";
-            // std::cout << k;
-            // std::cout << "  ";
-            // std::cout << "l: ";
-            // std::cout << l;
-            //    std::cout << "\n";
-            if (internal_matrix[k][l] < min){
-              min = internal_matrix[k][l];
-            }
-          }
-        }
-        //Submatrix end here
-        if(out_x < 58 && out_y < 45)
-        //Save max to output_matrix
-        background_matrix[out_y][out_x] = min;
-
-        j=j+11;
-        out_x++;
-      }
-      out_x = 0;
-      out_y++;
-
-      j = 0;
-      i=i+11;
-    }
-  }
 
 }
 
@@ -117,6 +73,7 @@ Compressor::Tick()
   int j = 0;
   int out_x = 0;
   int out_y = 0;
+  int habituate = 25;
 
   while (i < 480) {
     while (j < 640){
@@ -145,7 +102,11 @@ Compressor::Tick()
       //Submatrix end here
       if(out_x < 58 && out_y < 45)
       //Save max to output_matrix
-      output_matrix[out_y][out_x] = min;
+      if (habituate > 0){
+        background_matrix[out_y][out_x] = min;
+      } else {
+        output_matrix[out_y][out_x] = min;
+      }
 
       j=j+11;
       out_x++;
@@ -156,8 +117,9 @@ Compressor::Tick()
     j = 0;
     i=i+11;
   }
-  output_matrix=background_matrix;
-  //subtract(output_matrix,output_matrix, background_matrix, 58, 45);
+  habituate--;
+  if (!(habituate > 0))
+    subtract(output_matrix,output_matrix, background_matrix, 58, 45);
 
 }
 
