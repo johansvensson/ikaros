@@ -1,3 +1,38 @@
 <?xml version="1.0"?>
 
-Code to be added!
+<group name="Compessor" description="minimal example module">
+
+	<description type="text">
+		Minimal module that can be used as a start for a new module.
+		Simply change all occurrences of "MinimalModule" to the name of your new module in
+		MinimalModule.cc, MinimalModule.h and MinimalModule.ikc (this file), rename the files, and fill
+		in the new code and documentation. This module is located in the
+		UserModules directory.
+	</description>
+
+	<example description="A simple example">
+		<module
+			class="Compressor"
+			name="Compressor"
+		/>
+	</example>
+
+	<input name="INPUT" description="Input" />
+  <output name="OUTPUT" description="Output" size_x = "58" size_y = "45"/>
+
+	<module class="Compressor" />
+
+	<author>
+		<name>Christian Balkenius</name>
+		<email>christian.balkenius@lucs.lu.se</email>
+		<affiliation>Lund University Cognitive Science</affiliation>
+		<homepage>http://www.lucs.lu.se/Christian.Balkenius</homepage>
+	</author>
+
+   <files>
+   		<file>NearestBlob.h</file>
+   		<file>NearestBlob.cc</file>
+   		<file>NearestBlob.ikc</file>
+   </files>
+
+</group>
