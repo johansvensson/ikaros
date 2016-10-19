@@ -107,10 +107,13 @@ Compressor::Tick()
         background_matrix[out_y][out_x] = min;
       } else {
         output_matrix[out_y][out_x] = min;
-        if(abs(output_matrix[out_y][out_x] - background_matrix[out_y][out_x]) < 0.05){
+        if(abs(output_matrix[out_y][out_x] - background_matrix[out_y][out_x]) < 0.03){
           output_matrix[out_y][out_x] = output_matrix[out_y][out_x] - background_matrix[out_y][out_x];
         } else {
           output_matrix[out_y][out_x] = min;
+        }
+        if(output_matrix[out_y][out_x] >= 1.0){
+          output_matrix[out_y][out_x] = 0.0;
         }
       }
 
