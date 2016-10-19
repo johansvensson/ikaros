@@ -49,6 +49,8 @@ Compressor::Init()
 
   // Background stuff
   background_matrix = create_matrix(58, 45);
+  habituate = 25;
+
 
 
 }
@@ -73,7 +75,6 @@ Compressor::Tick()
   int j = 0;
   int out_x = 0;
   int out_y = 0;
-  int habituate = 25;
 
   while (i < 480) {
     while (j < 640){
@@ -119,7 +120,7 @@ Compressor::Tick()
   }
   habituate--;
   if (!(habituate > 0))
-    subtract(output_matrix,output_matrix, background_matrix, 58, 45);
+    add(output_matrix,output_matrix, background_matrix, 58, 45);
 
 }
 

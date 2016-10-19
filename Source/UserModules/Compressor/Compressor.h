@@ -40,6 +40,7 @@ public:
     float **    input_matrix;
     int         input_matrix_size_x;
     int         input_matrix_size_y;
+    int         habituate;
 
     float **    output_matrix;
     float **    background_matrix;
