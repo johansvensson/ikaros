@@ -106,7 +106,11 @@ Compressor::Tick()
       if (habituate > 0){
         background_matrix[out_y][out_x] = min;
       } else {
-        output_matrix[out_y][out_x] = min;
+        if(abs(output_matrix[out_y][out_x] - background_matrix[out_y][out_x]) < 0.05){
+          output_matrix[out_y][out_x] = output_matrix[out_y][out_x] - background_matrix[out_y][out_x];
+        } else {
+          output_matrix[out_y][out_x] = min;
+        }
       }
 
       j=j+11;
@@ -119,8 +123,6 @@ Compressor::Tick()
     i=i+11;
   }
   habituate--;
-  if (!(habituate > 0))
-    add(output_matrix,output_matrix, background_matrix, 58, 45);
 
 }
 
