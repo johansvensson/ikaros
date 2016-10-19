@@ -43,13 +43,13 @@ Compressor::Init()
   output_matrix_size_x = GetOutputSizeX("OUTPUT");
   output_matrix_size_y = GetOutputSizeY("OUTPUT");
 
-// Do we need an internal_matrix?
+  // Do we need an internal_matrix?
   internal_matrix = create_matrix(input_matrix_size_x, input_matrix_size_y);
 }
 
 Compressor::~Compressor()
 {
-    destroy_matrix(internal_matrix);
+  destroy_matrix(internal_matrix);
 }
 
 void
@@ -60,9 +60,39 @@ Compressor::Tick()
   // viewing angles   45 deg vertical & 58 deg horizontal.
   // If the input from the kincet-module is something else, this code needs to be modified.
 
-copy_matrix(internal_matrix, input_matrix, input_matrix_size_x, input_matrix_size_y);
+  copy_matrix(internal_matrix, input_matrix, input_matrix_size_x, input_matrix_size_y);
 
-//Step the pixel-amount in the input_matrix
+  //Step the pixel-amount in the input_matrix
+  int i = 0;
+  int j = 0;
+  int out_x = 0;
+  int out_y = 0;
+
+  while (i < 640) {
+    while (j < 480){
+      // Submatrix-work inside here
+      int max = 0;
+      for(int k=i; k < i + 11 && k < 640; k++){
+        for(int l=j; l < j+11 && l < 480; l++){
+
+          if (internal_matrix[k][l] > max){
+            max= internal_matrix[k][l];
+          }
+        }
+      }
+      //Submatrix end here
+
+      //Save max to output_matrix
+      output_matrix[out_x][out_y] = max;
+
+      i=i+11;
+
+      out_x++;
+      out_y++;
+    }
+    i = 0;
+    j=j+11;
+  }
   for(int i = 0; i < input_matrix_size_x; i++){
     for(int j = 0; j < input_matrix_size_y; j++){
 
