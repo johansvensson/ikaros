@@ -26,6 +26,7 @@
 
 
 #include "Compressor.h"
+#include <iostream>
 
 using namespace ikaros;
 
@@ -40,8 +41,6 @@ Compressor::Init()
 
   //Output matrix to be sent out. A compressed version of the input matrix.
   output_matrix = GetOutputMatrix("OUTPUT");
-  output_matrix_size_x = GetOutputSizeX("OUTPUT");
-  output_matrix_size_y = GetOutputSizeY("OUTPUT");
 
   // Do we need an internal_matrix?
   internal_matrix = create_matrix(input_matrix_size_x, input_matrix_size_y);
@@ -70,39 +69,42 @@ Compressor::Tick()
 
   while (i < 640) {
     while (j < 480){
+      // std::cout << "i: ";
+      // std::cout << i;
+      // std::cout << "  ";
+      // std::cout << "j: ";
+      // std::cout << j;
+
+      //std::cout << "\n";
       // Submatrix-work inside here
-      int max = 0;
+      float min = 999.0;
       for(int k=i; k < i + 11 && k < 640; k++){
         for(int l=j; l < j+11 && l < 480; l++){
-
-          if (internal_matrix[k][l] > max){
-            max= internal_matrix[k][l];
+          // std::cout << "k: ";
+          // std::cout << k;
+          // std::cout << "  ";
+          // std::cout << "l: ";
+          // std::cout << l;
+            //    std::cout << "\n";
+          if (internal_matrix[l][k] < min){
+           min = internal_matrix[l][k];
           }
         }
       }
       //Submatrix end here
-
+      if(out_x < 58 && out_y < 45)
       //Save max to output_matrix
-      output_matrix[out_x][out_y] = max;
+        output_matrix[out_y][out_x] = min;
 
-      i=i+11;
-
+      j=j+11;
       out_x++;
-      out_y++;
     }
-    i = 0;
-    j=j+11;
+    out_x = 0;
+    out_y++;
+
+    j = 0;
+    i=i+11;
   }
-  for(int i = 0; i < input_matrix_size_x; i++){
-    for(int j = 0; j < input_matrix_size_y; j++){
-
-      //Calculate a mid-value for all the pixels in the small part of the matrix
-
-
-
-    }
-  }
-
 }
 
 
