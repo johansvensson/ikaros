@@ -56,11 +56,12 @@ NerestPixel::Tick()
 
   int max_x = 29;
   int max_y = 22;
-  int closest = 0;
+  float closest = 0;
 
   for(int i = 0; i < 45; i++){
     for(int j = 0; j < 58; j++){
-      if(internal_matrix[j][i] > closest){
+      if(internal_matrix[i][j] > closest){
+        closest = internal_matrix[i][j];
         max_x=j;
         max_y=i;
       }
@@ -69,9 +70,9 @@ NerestPixel::Tick()
 
 
   if(max_x > 29){
-    output_matrix[0][0] = max_x-29;
+    output_matrix[0][0] = max_x-29 + 90;
   }else{
-    output_matrix[0][0] = 360-max_x;
+    output_matrix[0][0] = 270-max_x;
   }
 }
 

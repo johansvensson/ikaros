@@ -9,6 +9,16 @@
 <group title = "Kinect">
 
     <module
+      class		 = "Dynamixel"
+      name		 = "Dynamixel"
+      device   	 = "/dev/ttyUSB0"
+      index_mode 	 = "indirect"
+      servo_id	 = "1"
+      angle_unit 	 = "degrees"
+      delay = "1"
+    />
+
+    <module
         class 			= "Kinect"
         name 			= "Kinect"
         mode            = "raw"
@@ -27,7 +37,29 @@
         name = "Compressor"
     />
 
+    <module
+      class = "NerestPixel"
+      name = "Nerest"
+    />
+
+    <module
+      class = "Constant"
+      name = "Low"
+      data = "0.2"
+    />
+
+    <module
+      class = "Constant"
+      name = "Angle"
+      data = "235.0"
+    />
+
+    <connection sourcemodule="Low" source="OUTPUT" targetmodule="Dynamixel" target="TORQUE_LIMIT" />
+    <connection sourcemodule="Low" source="OUTPUT" targetmodule="Dynamixel" target="MOVING_SPEED" />
+
     <connection sourcemodule="Kinect" source="DEPTH" targetmodule="Compressor" target="INPUT" />
+    <connection sourcemodule="Compressor" source="OUTPUT" targetmodule="Nerest" target="INPUT" />
+    <connection sourcemodule="Angle" source="OUTPUT" targetmodule="Dynamixel" target="GOAL_POSITION" />
 
     <view name="Depth">
         <object class="Image" type="fire" name="Camera" module = "Compressor" source = "OUTPUT" x="0" y="0" w="4" h="3" />
