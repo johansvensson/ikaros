@@ -59,7 +59,7 @@ NerestPixel::Tick()
   int closest = 0;
 
   for(int i = 0; i < 45; i++){
-    for(int int j = 0; j < 58; j++){
+    for(int j = 0; j < 58; j++){
       if(internal_matrix[j][i] > closest){
         max_x=j;
         max_y=i;
