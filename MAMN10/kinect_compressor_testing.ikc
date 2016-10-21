@@ -7,7 +7,7 @@
 -->
 
 <group title = "Kinect">
-
+<!--
     <module
       class		 = "Dynamixel"
       name		 = "Dynamixel"
@@ -17,6 +17,7 @@
       angle_unit 	 = "degrees"
       delay = "1"
     />
+  -->
 
     <module
         class 			= "Kinect"
@@ -59,12 +60,12 @@
       data = "151.0"
     />
 
-    <connection sourcemodule="Low" source="OUTPUT" targetmodule="Dynamixel" target="TORQUE_LIMIT" />
-    <connection sourcemodule="High" source="OUTPUT" targetmodule="Dynamixel" target="MOVING_SPEED" />
+    <!--<connection sourcemodule="Low" source="OUTPUT" targetmodule="Dynamixel" target="TORQUE_LIMIT" />
+    <connection sourcemodule="High" source="OUTPUT" targetmodule="Dynamixel" target="MOVING_SPEED" />-->
 
     <connection sourcemodule="Kinect" source="DEPTH" targetmodule="Compressor" target="INPUT" />
     <connection sourcemodule="Compressor" source="OUTPUT" targetmodule="Nerest" target="INPUT" />
-    <connection sourcemodule="Nerest" source="OUTPUT" targetmodule="Dynamixel" target="GOAL_POSITION" />
+    <!--<connection sourcemodule="Nerest" source="OUTPUT" targetmodule="Dynamixel" target="GOAL_POSITION" />-->
 
     <view name="Depth">
         <object class="Image" type="fire" name="Camera" module = "Compressor" source = "OUTPUT" x="0" y="0" w="4" h="3" />
