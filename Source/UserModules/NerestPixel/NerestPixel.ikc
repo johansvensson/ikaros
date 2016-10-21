@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<group name="NerestPixel" description="Calculate the nerest pixel from a Compressor-module">
+
+	<description type="text">
+		From the output from a Compressor-module. This module calculate the closest pixel and
+		sends the coordinates in a maxrix ready for Dynamixel.
+	</description>
+
+	<example description="A module to calculate the nerest pixel">
+		<module
+			class="NerestPixel"
+			name="NerestPixel"
+		/>
+	</example>
+
+	<input name="INPUT" description="Input" />
+  <output name="OUTPUT" description="Output" size_x = "1" size_y = "1"/>
+
+	<module class="NerestPixel_" />
+
+	<author>
+		<name>Christian Balkenius</name>
+		<email>christian.balkenius@lucs.lu.se</email>
+		<affiliation>Lund University Cognitive Science</affiliation>
+		<homepage>http://www.lucs.lu.se/Christian.Balkenius</homepage>
+	</author>
+
+   <files>
+   		<file>NerestPixel.h</file>
+   		<file>NerestPixel.cc</file>
+   		<file>NerestPixel.ikc</file>
+   </files>
+
+</group>
