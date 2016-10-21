@@ -70,9 +70,9 @@ NerestPixel::Tick()
 
 
   if(max_x > 29){
-    output_matrix[0][0] = max_x-29 + 90;
+    output_matrix[0][0] = (max_x-29) + 180;
   }else{
-    output_matrix[0][0] = 270-max_x;
+    output_matrix[0][0] = (max_x-29)+180;
   }
 }
 

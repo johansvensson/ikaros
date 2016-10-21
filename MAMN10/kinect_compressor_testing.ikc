@@ -45,21 +45,26 @@
     <module
       class = "Constant"
       name = "Low"
-      data = "0.2"
+      data = "0.3"
+    />
+    <module
+      class = "Constant"
+      name = "High"
+      data = "0.9"
     />
 
     <module
       class = "Constant"
       name = "Angle"
-      data = "235.0"
+      data = "151.0"
     />
 
     <connection sourcemodule="Low" source="OUTPUT" targetmodule="Dynamixel" target="TORQUE_LIMIT" />
-    <connection sourcemodule="Low" source="OUTPUT" targetmodule="Dynamixel" target="MOVING_SPEED" />
+    <connection sourcemodule="High" source="OUTPUT" targetmodule="Dynamixel" target="MOVING_SPEED" />
 
     <connection sourcemodule="Kinect" source="DEPTH" targetmodule="Compressor" target="INPUT" />
     <connection sourcemodule="Compressor" source="OUTPUT" targetmodule="Nerest" target="INPUT" />
-    <connection sourcemodule="Angle" source="OUTPUT" targetmodule="Dynamixel" target="GOAL_POSITION" />
+    <connection sourcemodule="Nerest" source="OUTPUT" targetmodule="Dynamixel" target="GOAL_POSITION" />
 
     <view name="Depth">
         <object class="Image" type="fire" name="Camera" module = "Compressor" source = "OUTPUT" x="0" y="0" w="4" h="3" />
