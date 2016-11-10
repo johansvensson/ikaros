@@ -80,13 +80,6 @@ Compressor::Tick()
 
   while (i < 480) {
     while (j < 640){
-      // std::cout << "i: ";
-      // std::cout << i;
-      // std::cout << "  ";
-      // std::cout << "j: ";
-      // std::cout << j;
-
-      //std::cout << "\n";
       // Submatrix-work inside here
       float* values = new float[121];
       float median = 0;
@@ -102,23 +95,28 @@ Compressor::Tick()
         }
       }
       median = sort(values, 60)[30];
-      //std::vector<float> vect (values, values+121);
-      //std::sort(vect.begin(), vect.end());
-
-      //median = (vect.at(60) + vect.at(61))/2.0;
       //Submatrix end here
       if(out_x < 58 && out_y < 45)
       //Save max to output_matrix
       if (habituate > 0){
         background_matrix[out_y][out_x] = median;
+        if(background_matrix[out_y][out_x] >= 1.0){
+          background_matrix[out_y][out_x] = 0.0;
+        }
+        if(background_matrix[out_y][out_x] <= 0.0){
+          background_matrix[out_y][out_x] = 0.0;
+        }
       } else {
         output_matrix[out_y][out_x] = median;
-        if(abs(output_matrix[out_y][out_x] - background_matrix[out_y][out_x]) < 0.03){
+        if(abs(output_matrix[out_y][out_x] - background_matrix[out_y][out_x]) < 0.01){
           output_matrix[out_y][out_x] = output_matrix[out_y][out_x] - background_matrix[out_y][out_x];
         } else {
           output_matrix[out_y][out_x] = median;
         }
         if(output_matrix[out_y][out_x] >= 1.0){
+          output_matrix[out_y][out_x] = 0.0;
+        }
+        if(output_matrix[out_y][out_x] <= 0.0){
           output_matrix[out_y][out_x] = 0.0;
         }
       }
