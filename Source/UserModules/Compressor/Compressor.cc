@@ -91,10 +91,14 @@ Compressor::Tick()
       float* values = new float[121];
       float median = 0;
       int ind = 0;
+      int even = 0;
       for(int k=i; k < i + 11 && k < 480; k++){
         for(int l=j; l < j+11 && l < 640; l++){
           values[ind] = internal_matrix[k][l];
-          ind += 1;
+          if (even % 2 == 0){
+            ind += 1;
+          }
+          even += 1;
         }
       }
       median = sort(values, 121)[61];
