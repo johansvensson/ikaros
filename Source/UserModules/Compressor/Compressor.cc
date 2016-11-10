@@ -101,7 +101,7 @@ Compressor::Tick()
           even += 1;
         }
       }
-      median = sort(values, 121)[61];
+      median = sort(values, 60)[30];
       //std::vector<float> vect (values, values+121);
       //std::sort(vect.begin(), vect.end());
 
