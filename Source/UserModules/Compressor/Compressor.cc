@@ -102,7 +102,6 @@ Compressor::Tick()
       //std::sort(vect.begin(), vect.end());
 
       //median = (vect.at(60) + vect.at(61))/2.0;
-      median = 0.0;
       //Submatrix end here
       if(out_x < 58 && out_y < 45)
       //Save max to output_matrix
