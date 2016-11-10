@@ -128,6 +128,10 @@ Compressor::Tick()
   }
   habituate--;
 
+  std::cout << output_matrix[20][20];
+    std::cout << output_matrix[20][21];
+      std::cout << output_matrix[21][20];
+        std::cout << output_matrix[21][21];
 }
 
 
