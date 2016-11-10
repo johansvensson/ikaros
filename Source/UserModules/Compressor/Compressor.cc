@@ -21,12 +21,14 @@
 //
 //  This example is intended as a starting point for writing new Ikaros modules
 //  The example includes most of the calls that you may want to use in a module.
-//  If you prefer to start with a clean example, use he module MinimalModule instead.
+//  If you prefer to start with a clean example, use he module medianimalModule instead.
 //
 
 
 #include "Compressor.h"
 #include <iostream>
+#include <algorithm>
+#include <vector>
 
 using namespace ikaros;
 
@@ -86,37 +88,37 @@ Compressor::Tick()
 
       //std::cout << "\n";
       // Submatrix-work inside here
-      float min = 999.0;
+      float* values = new float[121];
+      float median = 0;
+      int ind = 0;
       for(int k=i; k < i + 11 && k < 480; k++){
         for(int l=j; l < j+11 && l < 640; l++){
-          // std::cout << "k: ";
-          // std::cout << k;
-          // std::cout << "  ";
-          // std::cout << "l: ";
-          // std::cout << l;
-          //    std::cout << "\n";
-          if (internal_matrix[k][l] < min){
-            min = internal_matrix[k][l];
-          }
+          values[ind] = internal_matrix[k][l];
+          ind += 1;
         }
       }
+      median = sort(values, 121)[61];
+      //std::vector<float> vect (values, values+121);
+      //std::sort(vect.begin(), vect.end());
+
+      //median = (vect.at(60) + vect.at(61))/2.0;
+      median = 0.0;
       //Submatrix end here
       if(out_x < 58 && out_y < 45)
       //Save max to output_matrix
       if (habituate > 0){
-        background_matrix[out_y][out_x] = min;
+        background_matrix[out_y][out_x] = median;
       } else {
-        output_matrix[out_y][out_x] = min;
+        output_matrix[out_y][out_x] = median;
         if(abs(output_matrix[out_y][out_x] - background_matrix[out_y][out_x]) < 0.03){
           output_matrix[out_y][out_x] = output_matrix[out_y][out_x] - background_matrix[out_y][out_x];
         } else {
-          output_matrix[out_y][out_x] = min;
+          output_matrix[out_y][out_x] = median;
         }
         if(output_matrix[out_y][out_x] >= 1.0){
           output_matrix[out_y][out_x] = 0.0;
         }
       }
-
       j=j+11;
       out_x++;
     }
@@ -127,11 +129,6 @@ Compressor::Tick()
     i=i+11;
   }
   habituate--;
-
-  std::cout << output_matrix[20][20];
-    std::cout << output_matrix[20][21];
-      std::cout << output_matrix[21][20];
-        std::cout << output_matrix[21][21];
 }
 
 
