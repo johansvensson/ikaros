@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<group name="BlobCreator" description="Blob creation module">
+
+	<description type="text">
+		This module receives a matrix with data that is processed to create
+		(define) and sort objects (blobs) in the foreground. The processed
+		data is placed in another matrix to be outputted.
+	</description>
+
+	<example description="A simple example">
+		<module
+			class="BlobCreator"
+			name="BlobCreator"
+		/>
+	</example>
+
+	<input name="INPUT" description="Input" description="Input matrix (x, y, depth)"/>
+  <output name="OUTPUT" description="Output matrix (x, y, depth)" size_x = "3" size_y = "99"/>
+
+	<module class="BlobCreator" />
+
+	<author>
+		<name>Daniel Myhrman</name>
+		<email>daniel.myhrman.629@student.lu.se</email>
+		<affiliation>Lund University Student</affiliation>
+	</author>
+
+   <files>
+   		<file>BlobCreator.h</file>
+   		<file>BlobCreator.cc</file>
+   		<file>BlobCreator.ikc</file>
+   </files>
+
+</group>
