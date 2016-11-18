@@ -45,7 +45,8 @@ BlobCreator::Init()
   output_matrix_size_y = GetOutputSizeY("OUTPUT");
 
   internal_matrix = create_matrix(input_matrix_size_x, input_matrix_size_y);
-  int temp;
+  temp = 0;
+  flag = true;
 }
 
 BlobCreator::~BlobCreator()
@@ -57,17 +58,33 @@ void
 BlobCreator::Tick()
 {
   copy_matrix(internal_matrix, input_matrix, input_matrix_size_x, input_matrix_size_y);
-//sort y
-  for(int i = 0; i < input_matrix_size_y; i++){
-    if(internal_matrix[2][i] > internal_matrix[2][i+1]){
-      temp = internal_matrix[2][i];
-      internal_matrix[2][i] = internal_matrix[2][i+1];
-      internal_matrix[2][i+1] = temp;
-
+//Sort y in ascending order
+  while(flag){
+    flag = false;
+    for(int i = 0; i < input_matrix_size_y - 1; i++){
+      if(internal_matrix[1][i] > internal_matrix[1][i+1]){
+        temp = internal_matrix[1][i];
+        internal_matrix[1][i] = internal_matrix[1][i+1];
+        internal_matrix[1][i+1] = temp;
+        flag = true;
+      }
     }
   }
-  //check which coordinates that have similar x and remove them from output matrix
+  //Set x:es to -1 that have similar or same value
+  for(int i = 0; i < internal_matrix_size_y; i++){
+    temp = internal_matrix[0][i];
+    for(int j = i+1; j < internal_matrix_size_y; j++){
+      //specication of selection
+      if(internal_matrix[0][j] < temp){
+        internal_matrix[0][j] = -1;
+      }
+    }
+  }
+  for (int i = 0; i < output_matrix_size_x; i++){
+    for (int j = 0; j < output_matrix_size_y; j++){
+      output_matrix[j][i] = internal_matrix[j][i];
+    }
+  }
+
 }
-
-
 static InitClass init("BlobCreator", &BlobCreator::Create, "Source/UserModules/BlobCreator/");
