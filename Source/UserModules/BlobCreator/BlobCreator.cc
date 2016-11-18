@@ -45,6 +45,7 @@ BlobCreator::Init()
   output_matrix_size_y = GetOutputSizeY("OUTPUT");
 
   internal_matrix = create_matrix(input_matrix_size_x, input_matrix_size_y);
+  int temp;
 }
 
 BlobCreator::~BlobCreator()
@@ -56,10 +57,16 @@ void
 BlobCreator::Tick()
 {
   copy_matrix(internal_matrix, input_matrix, input_matrix_size_x, input_matrix_size_y);
+//sort y
   for(int i = 0; i < input_matrix_size_y; i++){
-    if(internal_matrix[3][i] >= internal_matrix[3][i+1]){
+    if(internal_matrix[2][i] > internal_matrix[2][i+1]){
+      temp = internal_matrix[2][i];
+      internal_matrix[2][i] = internal_matrix[2][i+1];
+      internal_matrix[2][i+1] = temp;
+
     }
   }
+  //check which coordinates that have similar x and remove them from output matrix
 }
 
 
