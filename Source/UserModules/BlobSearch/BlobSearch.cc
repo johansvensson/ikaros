@@ -51,23 +51,31 @@ BlobSearch::Init()
 }
 
 void
-Compressor::Tick()
+BlobSearch::Tick()
 {
+  output_temp = create_matrix(output_matrix_size_x, output_matrix_size_y);
   int output_ind = 0;
-  for(int i = (kernel_size)/2 + 1; i < input_matrix_size_y - (kernel_size)/2 + 1; i++){
-    for(int j = (kernel_size)/2 + 1; j < input_matrix_size_x - (kernel_size)/2 + 1; j++){
+  for(int i = (kernel_size)/2 + 1; i < input_matrix_size_y - (kernel_size)/2 - 1; i++){
+    for(int j = (kernel_size)/2 + 1; j < input_matrix_size_x - (kernel_size)/2 - 1; j++){
       int foreground_pixels = 0;
       for(int k = 0; k < kernel_size; k++){
-        for(int l = 0; l < kernel_size; k++){
-          if(input_matrix[i + k][j + l] != 0.0){
+        for(int l = 0; l < kernel_size; l++){
+          if(input_matrix[i -(kernel_size/2) -1 + k][j -(kernel_size/2) -1 + l] > 0.1){
             foreground_pixels++;
           }
         }
       }
-      if(foreground_pixels > 12 && input_matrix[i+(kernel_size/2)][j+(kernel_size/2)] != 0.0){
-        output_matrix[output_ind] = [j, i, input_matrix[i][j]]
+      if(foreground_pixels > 12 && input_matrix[i+(kernel_size/2)+1][j+(kernel_size/2)+1] > 0.1){
+        output_temp[output_ind][0] = (float)j/45.0;
+        output_temp[output_ind][1] = (float)i/58.0;
+        //output_matrix[output_ind][2] = input_matrix[i][j];
         output_ind++;
       }
+    }
+  }
+  for (int i = 0; i < output_matrix_size_x; i++){
+    for (int j = 0; j < output_matrix_size_y; j++){
+      output_matrix[j][i] = output_temp[j][i];
     }
   }
 }

@@ -31,7 +31,7 @@ class BlobSearch: public Module
 public:
     static Module * Create(Parameter * p) { return new BlobSearch(p); }
 
-    BlobSeach(Parameter * p) : Module(p) {}
+    BlobSearch(Parameter * p) : Module(p) {}
 
     void 		Init();
     void 		Tick();
@@ -45,6 +45,8 @@ public:
     int         output_matrix_size_y;
 
     int         kernel_size;
+
+    float **    output_temp;
 
 };
 
