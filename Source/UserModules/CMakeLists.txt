@@ -11,7 +11,7 @@ add_subdirectory(LowResBlobList)
 add_subdirectory(SpeedFunction)
 add_subdirectory(Compressor)
 add_subdirectory(NerestPixel)
-add_usbdirectory(BlobSearch)
+add_subdirectory(BlobSearch)
 
 
 
