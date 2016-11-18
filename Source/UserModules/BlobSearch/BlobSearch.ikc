@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+
+<group name="BlobSearch" description="kernel blob search">
+
+	<description type="text">
+		Searches for blobs in image with kernel
+	</description>
+
+	<example description="A simple example">
+		<module
+			class="BlobSearch"
+			name="BlobSearch"
+		/>
+	</example>
+
+	<input name="INPUT" description="Input" size_x = "58" size_y = "45" />
+  <output name="OUTPUT" description="Output" size_x = "3" size_y = "9999"/>
+
+	<module class="BlobSearch" />
+
+	<author>
+		<name>Shan Langlais</name>
+		<email>dat13sla@student.lu.se</email>
+		<affiliation>Lund University Cognitive Science</affiliation>
+		<homepage> d </homepage>
+	</author>
+
+   <files>
+   		<file>BlobSearch.h</file>
+   		<file>BlobSearch.cc</file>
+   		<file>BlobSearch.ikc</file>
+   </files>
+
+</group>
