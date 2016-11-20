@@ -70,19 +70,23 @@ BlobCreator::Tick()
       }
     }
   }
-  //Set x:es to -1 that have similar or same value
+
+  //Set all x doubles (or more) to -1
   for(int i = 0; i < internal_matrix_size_y; i++){
     temp = internal_matrix[0][i];
     for(int j = i+1; j < internal_matrix_size_y; j++){
       //specication of selection
-      if(internal_matrix[0][j] < temp){
+      if(internal_matrix[0][j] == temp){
         internal_matrix[0][j] = -1;
       }
     }
   }
+  //Fill output_matrix (möjligt problem: skapar tomma rader i output tror jag)
   for (int i = 0; i < output_matrix_size_x; i++){
     for (int j = 0; j < output_matrix_size_y; j++){
-      output_matrix[j][i] = internal_matrix[j][i];
+      if(internal_matrix[0][j] != -1){
+      output_matrix[i][j] = internal_matrix[i][j];
+      }
     }
   }
 
