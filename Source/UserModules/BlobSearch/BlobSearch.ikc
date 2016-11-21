@@ -14,7 +14,11 @@
 	</example>
 
 	<input name="INPUT" description="Input" size_x = "58" size_y = "45" />
+<<<<<<< HEAD
   <output name="OUTPUT" description="Output" size_x = "3" size_y = "999"/>
+=======
+  <output name="OUTPUT" description="Output" size_x = "2" size_y = "999"/>
+>>>>>>> 99123dce41b7bbe68527b7e9ed69c5d322a69064
 
 	<module class="BlobSearch" />
 
