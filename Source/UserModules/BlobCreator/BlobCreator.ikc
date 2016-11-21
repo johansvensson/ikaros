@@ -15,7 +15,7 @@
 		/>
 	</example>
 
-	<input name="INPUT" description="Input matrix (x, y, depth)"/>
+	<input name="INPUT" description="Input matrix (x, y, depth)" size_x = "3" size_y = "999"/>
   <output name="OUTPUT" description="Output matrix (x, y, depth)" size_x = "2" size_y = "99"/>
 
 	<module class="BlobCreator" />

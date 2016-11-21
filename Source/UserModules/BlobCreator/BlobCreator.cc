@@ -58,13 +58,22 @@ void
 BlobCreator::Tick()
 {
   copy_matrix(internal_matrix, input_matrix, input_matrix_size_x, input_matrix_size_y);
-  float temp = 0.0;
+  float temp = 10.0;
   bool flag = true;
+
+  // for (int i = 0; i < input_matrix_size_y; i++){
+  //   if(input_matrix[i][1] == 0.0){
+  //     input_matrix[i][0] = -1.0;
+  //     input_matrix[i][1] = -1.0;
+  //   }
+  //   //output_matrix[k][2] = -1.0;
+  // }
+
   //Sort y in ascending order
   while(flag){
     flag = false;
     for(int i = 0; i < input_matrix_size_y - 1; i++){
-      if(internal_matrix[i][1] > internal_matrix[i+1][1]){
+      if(internal_matrix[i][1] > internal_matrix[i+1][1] && internal_matrix[i+1][1] != -1.0){
         temp = internal_matrix[i][1];
         internal_matrix[i][1] = internal_matrix[i+1][1];
         internal_matrix[i+1][1] = temp;
@@ -75,29 +84,43 @@ BlobCreator::Tick()
 
   //Set all x doubles (or more) to -1
   for(int i = 0; i < internal_matrix_size_y; i++){
-    temp = internal_matrix[i][0];
+    temp = (float)internal_matrix[i][0];
     for(int j = i+1; j < internal_matrix_size_y; j++){
       //specication of selection
-      if(internal_matrix[j][0] == temp){
+      if(10.0 > fabs(temp - internal_matrix[j][0]) || internal_matrix[j][1] == 0.0){
         internal_matrix[j][0] = -1.0;
+        internal_matrix[j][1] = -1.0;
+        internal_matrix[j][2] = -1.0;
       }
     }
   }
-  //Fill output_matrix (möjligt problem: skapar tomma rader i output tror jag)
+  //Fill output_matrix
   int k = 0;
   for (int j = 0; j < internal_matrix_size_y; j++){
-    if(internal_matrix[j][0] != -1.0){
-      output_matrix[k][0] = internal_matrix[j][0];
-      output_matrix[k][1] = internal_matrix[j][1];
+    if(internal_matrix[j][0] != -1.0 && internal_matrix[j][1] != -1.0){
+      output_matrix[k][0] = (float)internal_matrix[j][0]; //for visualization
+      output_matrix[k][1] = (float)internal_matrix[j][1]; // this too
       //output_matrix[k][2] = internal_matrix[j][2];
       k++;
     }
   }
 
   for (int i = k; i < output_matrix_size_y; i++){
-    output_matrix[k][0] = -1.0;
-    output_matrix[k][1] = -1.0;
+    output_matrix[i][0] = -1.0;
+    output_matrix[i][1] = -1.0;
     //output_matrix[k][2] = -1.0;
+  }
+
+  while(flag){
+    flag = false;
+    for(int i = 0; i < output_matrix_size_y - 1; i++){
+      if(output_matrix[i][2] > output_matrix[i+1][2] && output_matrix[i+1][2] != -1.0){
+        temp = output_matrix[i][2];
+        output_matrix[i][2] = output_matrix[i+1][2];
+        output_matrix[i+1][2] = temp;
+        flag = true;
+      }
+    }
   }
 }
 static InitClass init("BlobCreator", &BlobCreator::Create, "Source/UserModules/BlobCreator/");

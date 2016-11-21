@@ -13,6 +13,7 @@ add_subdirectory(Compressor)
 add_subdirectory(NerestPixel)
 add_subdirectory(BlobSearch)
 add_subdirectory(BlobCreator)
+add_subdirectory(ArmTester)
 
 
 

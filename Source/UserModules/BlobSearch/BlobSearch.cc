@@ -53,9 +53,10 @@ BlobSearch::Init()
 void
 BlobSearch::Tick()
 {
+  bool flag = false;
   for (int i = 0; i < output_matrix_size_x; i++){
     for (int j = 0; j < output_matrix_size_y; j++){
-      output_matrix[j][i] = 0.0;
+      output_matrix[j][i] = -1.0;
     }
   }
   int output_ind = 0;
@@ -77,10 +78,19 @@ BlobSearch::Tick()
           output_ind++;
         } else {
           output_ind = 0;
+          flag = true;
         }
       }
     }
   }
+  if(!flag){
+      for (int i = output_ind; i < output_matrix_size_y; i++){
+        for (int j = 0; j < output_matrix_size_x; j++){
+          output_matrix[i][j] = -1.0;
+        }
+      }
+  }
+
 }
 
 
