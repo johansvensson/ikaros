@@ -12,6 +12,7 @@ add_subdirectory(SpeedFunction)
 add_subdirectory(Compressor)
 add_subdirectory(NerestPixel)
 add_subdirectory(BlobSearch)
+add_subdirectory(BlobCreator)
 
 
 

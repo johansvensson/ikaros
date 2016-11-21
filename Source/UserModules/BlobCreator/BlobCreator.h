@@ -32,7 +32,7 @@ public:
     static Module * Create(Parameter * p) { return new BlobCreator(p); }
 
     BlobCreator(Parameter * p) : Module(p) {}
-
+    virtual ~BlobCreator();
     void 		Init();
     void 		Tick();
 
@@ -43,10 +43,10 @@ public:
     float **    output_matrix;
     int         output_matrix_size_x;
     int         output_matrix_size_y;
-    bool        flag;
-    int         temp;
 
     float **    internal_matrix;
+    int         internal_matrix_size_x;
+    int         internal_matrix_size_y;
 };
 
 #endif
