@@ -14,7 +14,7 @@
 	</example>
 
 	<input name="INPUT" description="Input" size_x = "58" size_y = "45" />
-  <output name="OUTPUT" description="Output" size_x = "2" size_y = "999"/>
+  <output name="OUTPUT" description="Output" size_x = "3" size_y = "999"/>
 
 	<module class="BlobSearch" />
 

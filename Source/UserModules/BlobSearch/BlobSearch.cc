@@ -70,9 +70,9 @@ BlobSearch::Tick()
         }
       }
       if(foreground_pixels > kernel_size*kernel_size/2 + 1 && input_matrix[i][j] > 0.05){
-        output_matrix[output_ind][0] = (float)j/58.0;
-        output_matrix[output_ind][1] = (float)i/45.0;
-        //output_matrix[output_ind][2] = input_matrix[i][j];
+        output_matrix[output_ind][0] = (float)j;
+        output_matrix[output_ind][1] = (float)i;
+        output_matrix[output_ind][2] = (float)input_matrix[i][j];
         if(output_ind < 998){
           output_ind++;
         } else {
