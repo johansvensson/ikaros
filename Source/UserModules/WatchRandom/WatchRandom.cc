@@ -67,16 +67,10 @@ void WatchRandom::Tick()
           }
           /* random int between 0 and amount  */
           random = (int)rand()%(amount+1);
-          randx = (float)((rand()%100)/100.0);
-          randy = (float)((rand()%100)/100.0);
-
 
     }
     /* Inserting the the random point from internal_matrix to output_matrix */
-    if(internal_matrix[random][0] == -1.0){
-      output_matrix[0][0] = randx;
-      output_matrix[0][1] = 1.0;
-    } else {
+    if(amount > 0){
       output_matrix[0][0] = internal_matrix[random][0];
       output_matrix[0][1] = internal_matrix[random][1];
     }

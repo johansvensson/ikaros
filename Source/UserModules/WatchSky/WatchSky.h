@@ -34,8 +34,7 @@ public:
     void 		Init();
     void 		Tick();
 
-    float **    input_matrix;
-    int         input_matrix_size_x;
+    float ** output_matrix;
 
 
 
