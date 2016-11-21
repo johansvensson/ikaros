@@ -21,6 +21,7 @@
 #include "WatchSky.h"
 #include <stdlib.h>
 #include <iostream>
+#include <ctime>
 
 using namespace ikaros;
 using namespace std;
@@ -28,59 +29,35 @@ using namespace std;
 void
 WatchSky::Init()
 {
-  input_matrix = GetInputMatrix("INPUT");
-  input_matrix_size_x = GetInputSizeX("INPUT");
-  input_matrix_size_y = GetInputSizeY("INPUT");
-
   output_matrix = GetOutputMatrix("OUTPUT");
-  output_matrix_size_x = GetOutputSizeX("OUTPUT");
-  output_matrix_size_y = GetOutputSizeY("OUTPUT");
 
-  tick_counter = 0;
-  random = 0;
-  randx = 0;
-  randy = 0;
 
-  internal_matrix = create_matrix(input_matrix_size_x, input_matrix_size_y);
+  std::srand(std::time(0));
+
 }
 
 WatchSky::~WatchSky()
 {
-    destroy_matrix(internal_matrix);
+
 }
 
 void WatchSky::Tick()
 {
-    copy_matrix(internal_matrix, input_matrix, input_matrix_size_x, input_matrix_size_y);
-    for (int j=0; j<output_matrix_size_y; j++)
-        for (int i=0; i<output_matrix_size_x; i++)
-              output_matrix[j][i] = -1.0;
-    tick_counter++;
-    if(tick_counter > (rand()%(60-30+1) + 30)){
-          tick_counter = 0;
-          /* count the amount of valid points in matrix */
-          int amount = 0;
-          for (int j=0; j<input_matrix_size_y;j++){
-            if(internal_matrix[j][0] != -1.0){
-              amount++;
-            }
-          }
-          /* random int between 0 and amount  */
-          random = (int)rand()%(amount+1);
-          randx = (float)((rand()%100)/100.0);
-          randy = (float)((rand()%100)/100.0);
+          /* Generate two random cordinates and scales them to a valid scope */
+          float randx = (float)(std::rand()%58);
+          float randy = (float)(std::rand()%45);
 
+          /* To be removed
+          rand_x = (float)((rand()%100)/100.0);
+          rand_y = (float)((rand()%100)/100.0);7
+          */
 
-    }
-    /* Inserting the the random point from internal_matrix to output_matrix */
-    if(internal_matrix[random][0] == -1.0){
-      output_matrix[0][0] = randx;
-      output_matrix[0][1] = 1.0;
-    } else {
-      output_matrix[0][0] = internal_matrix[random][0];
-      output_matrix[0][1] = internal_matrix[random][1];
-    }
+          /* Insert the radom cordinates in the output_matrix
+          witch is to be sent to the robot */
+          output_matrix[0][0] = randx;
+          output_matrix[0][1] = randy;
 
+    
 
 }
 
