@@ -47,35 +47,38 @@ BlobSearch::Init()
   output_matrix_size_x = GetOutputSizeX("OUTPUT");
   output_matrix_size_y = GetOutputSizeY("OUTPUT");
 
-  kernel_size = 5;
+  kernel_size = 11;
 }
 
 void
 BlobSearch::Tick()
 {
-  output_temp = create_matrix(output_matrix_size_x, output_matrix_size_y);
+  for (int i = 0; i < output_matrix_size_x; i++){
+    for (int j = 0; j < output_matrix_size_y; j++){
+      output_matrix[j][i] = 0.0;
+    }
+  }
   int output_ind = 0;
   for(int i = (kernel_size)/2 + 1; i < input_matrix_size_y - (kernel_size)/2 - 1; i++){
     for(int j = (kernel_size)/2 + 1; j < input_matrix_size_x - (kernel_size)/2 - 1; j++){
       int foreground_pixels = 0;
-      for(int k = 0; k < kernel_size; k++){
-        for(int l = 0; l < kernel_size; l++){
-          if(input_matrix[i -(kernel_size/2) -1 + k][j -(kernel_size/2) -1 + l] > 0.1){
+      for(int k = i - kernel_size/2 - 1; k < i + kernel_size/2 + 1; k++){
+        for(int l = j - kernel_size/2 - 1; l < j + kernel_size/2 + 1; l++){
+          if(input_matrix[k][l] > 0.05){
             foreground_pixels++;
           }
         }
       }
-      if(foreground_pixels > 12 && input_matrix[i+(kernel_size/2)+1][j+(kernel_size/2)+1] > 0.1){
-        output_temp[output_ind][0] = (float)j/45.0;
-        output_temp[output_ind][1] = (float)i/58.0;
+      if(foreground_pixels > kernel_size*kernel_size/2 + 1 && input_matrix[i][j] > 0.05){
+        output_matrix[output_ind][0] = (float)j/58.0;
+        output_matrix[output_ind][1] = (float)i/45.0;
         //output_matrix[output_ind][2] = input_matrix[i][j];
-        output_ind++;
+        if(output_ind < 998){
+          output_ind++;
+        } else {
+          output_ind = 0;
+        }
       }
-    }
-  }
-  for (int i = 0; i < output_matrix_size_x; i++){
-    for (int j = 0; j < output_matrix_size_y; j++){
-      output_matrix[j][i] = output_temp[j][i];
     }
   }
 }
