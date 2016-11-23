@@ -38,11 +38,8 @@ public:
     void 		Tick();
 
     float **    input_matrix;
-    int         input_matrix_size_x;
-    int         input_matrix_size_y;
 
     float **    output_matrix;
-    float **    internal_matrix;
 
 
 };
