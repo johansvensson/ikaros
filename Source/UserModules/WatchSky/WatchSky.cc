@@ -30,6 +30,7 @@ void
 WatchSky::Init()
 {
   output_matrix = GetOutputMatrix("OUTPUT");
+  weight_output = GetOutputMatrix("WEIGHT");
 
 
   std::srand(std::time(0));
@@ -56,8 +57,8 @@ void WatchSky::Tick()
           witch is to be sent to the robot */
           output_matrix[0][0] = randx;
           output_matrix[0][1] = randy;
+          weight_output[0][0] = 0.1;
 
-    
 
 }
 
