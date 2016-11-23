@@ -53,6 +53,7 @@ WatchRandom::~WatchRandom()
 void WatchRandom::Tick()
 {
     copy_matrix(internal_matrix, input_matrix, input_matrix_size_x, input_matrix_size_y);
+    //Set all in output_matrix to -1
     for (int j=0; j<output_matrix_size_y; j++)
         for (int i=0; i<output_matrix_size_x; i++)
               output_matrix[j][i] = -1.0;
@@ -70,10 +71,16 @@ void WatchRandom::Tick()
           random = (int)rand()%(amount+1);
 
     }
+
+    //Calculate weight
+    float weight = 0.0;
+    weight = 1.0 - 1.0/amount;
+
     /* Inserting the the random point from internal_matrix to output_matrix */
     if(amount > 0){
       output_matrix[0][0] = internal_matrix[random][0];
       output_matrix[0][1] = internal_matrix[random][1];
+      output_matrix[0][2] = weight;
     }
 
 
