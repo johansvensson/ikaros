@@ -23,6 +23,17 @@
     />
 
     <module
+      class = "Constant"
+      name = "MulConstCross"
+      data = "45.0 58.0"
+    />
+
+    <!--<module
+      class = "Multiply"
+      name = "Multiply"
+    />-->
+
+    <module
       class = "ArmTester"
       name = "ArmTester"
     />
@@ -31,6 +42,22 @@
       class = "BlobSearch"
       name = "BlobSearch"
     />
+
+    <!--<module
+      class = "NerestPixel"
+      name = "NerestPixel"
+    />
+
+    <module
+      class = "WatchRandom"
+      name = "WatchRandom"
+    />
+
+    <module
+      class = "Arbiter"
+      name = "Arbiter"
+      no_of_inputs = "2"
+    />-->
 
     <module
         class 			= "Kinect"
@@ -79,13 +106,25 @@
     <connection sourcemodule="Kinect" source="DEPTH" targetmodule="Compressor" target="INPUT" />
     <connection sourcemodule="Compressor" source="OUTPUT" targetmodule="BlobSearch" target="INPUT" />
     <connection sourcemodule="BlobSearch" source="OUTPUT" targetmodule="BlobCreator" target="INPUT" />
+
+    <!--<connection sourcemodule="BlobCreator" source="OUTPUT" targetmodule="Multiply" target="INPUT1" />
+    <connection sourcemodule="MulConstCross" source="OUTPUT" targetmodule="Multiply" target="INPUT2" />-->
     <connection sourcemodule="BlobCreator" source="OUTPUT" targetmodule="ArmTester" target="INPUT" />
     <connection sourcemodule="ArmTester" source="OUTPUT" targetmodule="Dynamixel" target="GOAL_POSITION" />
+
+    <!-- connections to arbiter -->
+    <!--<connection sourcemodule="BlobCreator" source="OUTPUT" targetmodule="NerestPixel" target="INPUT" />
+    <conncetion sourcemodule="BlobCreator" source="OUTPUT" targetmodule="WatchRandom" target="INPUT" />
+
+    <connection sourcemodule="NerestPixel" source="OUTPUT" targetmodule="Arbiter" target="INPUT_1" />
+    <connection sourcemodule="WatchRandom" source="OUTPUT" targetmodule="Arbiter" target="INPUT_2" />-->
+
+    <!--set torque limit -->
     <connection sourcemodule="TL" source="OUTPUT" targetmodule="Dynamixel" target="TORQUE_LIMIT" />
 
     <view name="Depth">
         <object class="Image" type="fire" name="Camera" module = "Compressor" source = "OUTPUT" x="0" y="0" w="4" h="3" />
-        <object class="Cross" module="BlobCreator" source="OUTPUT" x="0" y="0" w="4" h="3" />
+        <!--<object class="Cross" module="Multiply" source="OUTPUT" x="0" y="0" w="4" h="3" />-->
         <object class="Table" module="BlobCreator" source="OUTPUT" x ="4" y="0" w="2" h="10" />
         <!--object class="Image" type="rgb" name="Camera" module = "Kinect" source = "RED+GREEN+BLUE" x="0" y="2" w="3" h="2" /-->
 
