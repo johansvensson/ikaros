@@ -17,11 +17,11 @@
 		/>
 	</example>
 
-  <input name="INPUT" description="Input matrix of (x,y) coordinates" />
-  <output name="OUTPUT" description="Output matrix of chosen coordinates" size_set="INPUT" />
+  <input name="INPUT" description="Input matrix of (x,y) coordinates" size_x = "3" size_y = "99" />
+  <output name="OUTPUT" description="Output matrix of chosen coordinates" size_x = "2" size_y = "1" />
 	<output name="WEIGHT" description="WEIGHT" size_x = "1" size_y = "1" />
 
-	<module class="WatchRandom" />e
+	<module class="WatchRandom" />
 
 	<author>
 		<name>Johan Svensson</name>

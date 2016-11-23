@@ -44,6 +44,10 @@ public:
     int         output_matrix_size_x;
     int         output_matrix_size_y;
 
+    float **    output_matrix_tracker;
+    int         output_matrix_tracker_size_x;
+    int         output_matrix_tracker_size_y;
+
     float **    internal_matrix;
     int         internal_matrix_size_x;
     int         internal_matrix_size_y;

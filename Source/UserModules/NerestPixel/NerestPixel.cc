@@ -43,10 +43,6 @@ NerestPixel::Init()
 
 }
 
-NerestPixel::~NerestPixel()
-{
-}
-
 void
 NerestPixel::Tick()
 {

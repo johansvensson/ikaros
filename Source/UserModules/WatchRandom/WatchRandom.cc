@@ -80,8 +80,8 @@ void WatchRandom::Tick()
     weight_output[0][0] = weight;
     /* Inserting the the random point from internal_matrix to output_matrix */
     if(amount > 0){
-      output_matrix[0][0] = internal_matrix[random][0];
-      output_matrix[0][1] = internal_matrix[random][1];
+      output_matrix[0][0] = 0.0;//internal_matrix[random][1]
+      output_matrix[0][1] = 0.0;//internal_matrix[random][1]
       //output_matrix[0][2] = weight;
     }
 

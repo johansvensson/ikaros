@@ -32,7 +32,6 @@ public:
     static Module * Create(Parameter * p) { return new NerestPixel(p); }
 
     NerestPixel(Parameter * p) : Module(p) {}
-    virtual ~NerestPixel();
 
     void 		Init();
     void 		Tick();

@@ -17,8 +17,11 @@
 		/>
 	</example>
 
-	<input name="INPUT" description="Input origin coordinates" />
-  <output name="OUTPUT" description="Input matrix of (x,y) coordinates" size="3" />
+	<input name="GOAL_POSITION" description="goal pos" />
+	<input name="PRESENT_POSITION" description="present pos" />
+  <output name="GOAL_SPEED_OUTPUT" description="Input matrix of (x,y) coordinates" size="3" />
+	<output name="GOAL_POSITION_OUTPUT" description="goal position" size="3" />
+
 
 	<module class="ArmTester" />
 

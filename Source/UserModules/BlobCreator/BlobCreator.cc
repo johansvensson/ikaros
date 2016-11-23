@@ -44,6 +44,10 @@ BlobCreator::Init()
   output_matrix_size_x = GetOutputSizeX("OUTPUT");
   output_matrix_size_y = GetOutputSizeY("OUTPUT");
 
+  output_matrix_tracker = GetOutputMatrix("OUTPUT_TRACKER_POS");
+  output_matrix_tracker_size_x = GetOutputSizeX("OUTPUT_TRACKER_POS");
+  output_matrix_tracker_size_y = GetOutputSizeY("OUTPUT_TRACKER_POS");
+
   internal_matrix = create_matrix(input_matrix_size_x, input_matrix_size_y);
   internal_matrix_size_x = input_matrix_size_x;
   internal_matrix_size_y = input_matrix_size_y;
@@ -122,5 +126,12 @@ BlobCreator::Tick()
       }
     }
   }
+
+  for (int i = 0; i < output_matrix_size_y; i++){
+    output_matrix_tracker[i][0] = output_matrix[i][0] / 58.0;
+    output_matrix_tracker[i][1] = output_matrix[i][1] / 45.0;
+    output_matrix_tracker[i][2] = output_matrix[i][2] / 1.0;
+  }
+
 }
 static InitClass init("BlobCreator", &BlobCreator::Create, "Source/UserModules/BlobCreator/");

@@ -36,9 +36,10 @@ public:
     void 		Init();
     void 		Tick();
 
-    float **    input_matrix;
-
-    float *     output;
+    float **    goal_matrix;
+    float **    present_matrix;
+    float *     output_pos;
+    float *     output_speed;
 };
 
 #endif

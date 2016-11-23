@@ -28,16 +28,22 @@ using namespace ikaros;
 void
 ArmTester::Init()
 {
-  input_matrix = GetInputMatrix("INPUT");
-  output = GetOutputArray("OUTPUT");
+  goal_matrix = GetInputMatrix("GOAL_POSITION");
+  present_matrix = GetInputMatrix("PRESENT_POSITION");
+  output_pos = GetOutputArray("GOAL_POSITION_OUTPUT");
+  output_speed = GetOutputArray("GOAL_SPEED_OUTPUT");
 }
 
 void
 ArmTester::Tick()
 {
-  output[0] = 360.0 - (input_matrix[0][0] + 90.0);
-  output[1] = 135.0 - (input_matrix[0][1]);
-  output[2] = 0.0;
+  output_pos[0] = 360.0 - (goal_matrix[0][0] + 90.0);
+  output_pos[1] = 135.0 - (goal_matrix[0][1]/2);
+  output_pos[2] = 135.0 - (goal_matrix[0][1]/2);
+
+  output_speed[0] = 0.5;
+  output_speed[1] = 0.5;
+  output_speed[2] = 0.5;
 }
 
 static InitClass init("ArmTester", &ArmTester::Create, "Source/UserModules/ArmTester/");
