@@ -36,6 +36,8 @@ WatchRandom::Init()
   output_matrix_size_x = GetOutputSizeX("OUTPUT");
   output_matrix_size_y = GetOutputSizeY("OUTPUT");
 
+  weight_output = GetOutputMatrix("WEIGHT");
+
   tick_counter = 0;
   random = 0;
   randx = 0;
@@ -75,12 +77,12 @@ void WatchRandom::Tick()
     //Calculate weight
     float weight = 0.0;
     weight = 1.0 - 1.0/amount;
-
+    weight_output[0][0] = weight;
     /* Inserting the the random point from internal_matrix to output_matrix */
     if(amount > 0){
       output_matrix[0][0] = internal_matrix[random][0];
       output_matrix[0][1] = internal_matrix[random][1];
-      output_matrix[0][2] = weight;
+      //output_matrix[0][2] = weight;
     }
 
 

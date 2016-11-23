@@ -42,6 +42,8 @@ public:
     int         output_matrix_size_x;
     int         output_matrix_size_y;
 
+    float **    weight_output;
+
     float **    internal_matrix;
 
     int         tick_counter;
