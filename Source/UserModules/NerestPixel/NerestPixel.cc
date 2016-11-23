@@ -59,5 +59,6 @@ NerestPixel::Tick()
   output_matrix[0][2]=input_matrix[0][3];
 
 
+}
 
 static InitClass init("NerestPixel", &NerestPixel::Create, "Source/UserModules/NerestPixel/");
