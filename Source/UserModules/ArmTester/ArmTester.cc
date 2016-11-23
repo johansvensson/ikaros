@@ -1,7 +1,7 @@
 //
-//	BlobCreator.h		This file is a part of the IKAROS project
+//	MinimalModule.cc		This file is a part of the IKAROS project
 //
-//    Copyright (C) 2012 <Daniel Myhrman>
+//    Copyright (C) 2012 <Author Name>
 //
 //    This program is free software; you can redistribute it and/or modify
 //    it under the terms of the GNU General Public License as published by
@@ -21,32 +21,23 @@
 //
 
 
-#ifndef BlobCreator_
-#define BlobCreator_
+#include "ArmTester.h"
 
-#include "IKAROS.h"
+using namespace ikaros;
 
-class BlobCreator: public Module
+void
+ArmTester::Init()
 {
-public:
-    static Module * Create(Parameter * p) { return new BlobCreator(p); }
+  input_matrix = GetInputMatrix("INPUT");
+  output = GetOutputArray("OUTPUT");
+}
 
-    BlobCreator(Parameter * p) : Module(p) {}
-    virtual ~BlobCreator();
-    void 		Init();
-    void 		Tick();
+void
+ArmTester::Tick()
+{
+  output[0] = 360.0 - (input_matrix[0][0] + 90.0);
+  output[1] = 135.0 - (input_matrix[0][1]);
+  output[2] = 0.0;
+}
 
-    float **    input_matrix;
-    int         input_matrix_size_x;
-    int         input_matrix_size_y;
-
-    float **    output_matrix;
-    int         output_matrix_size_x;
-    int         output_matrix_size_y;
-
-    float **    internal_matrix;
-    int         internal_matrix_size_x;
-    int         internal_matrix_size_y;
-};
-
-#endif
+static InitClass init("ArmTester", &ArmTester::Create, "Source/UserModules/ArmTester/");

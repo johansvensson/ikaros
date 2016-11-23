@@ -1,7 +1,7 @@
 //
-//	BlobCreator.h		This file is a part of the IKAROS project
+//	MinimalModule.h		This file is a part of the IKAROS project
 //
-//    Copyright (C) 2012 <Daniel Myhrman>
+//    Copyright (C) 2012 <Author Name>
 //
 //    This program is free software; you can redistribute it and/or modify
 //    it under the terms of the GNU General Public License as published by
@@ -21,32 +21,24 @@
 //
 
 
-#ifndef BlobCreator_
-#define BlobCreator_
+#ifndef ArmTester_
+#define ArmTester_
 
 #include "IKAROS.h"
 
-class BlobCreator: public Module
+class ArmTester: public Module
 {
 public:
-    static Module * Create(Parameter * p) { return new BlobCreator(p); }
+    static Module * Create(Parameter * p) { return new ArmTester(p); }
 
-    BlobCreator(Parameter * p) : Module(p) {}
-    virtual ~BlobCreator();
+    ArmTester(Parameter * p) : Module(p) {}
+
     void 		Init();
     void 		Tick();
 
     float **    input_matrix;
-    int         input_matrix_size_x;
-    int         input_matrix_size_y;
 
-    float **    output_matrix;
-    int         output_matrix_size_x;
-    int         output_matrix_size_y;
-
-    float **    internal_matrix;
-    int         internal_matrix_size_x;
-    int         internal_matrix_size_y;
+    float *     output;
 };
 
 #endif

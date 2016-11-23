@@ -1,7 +1,4 @@
-//
-//	BlobCreator.h		This file is a part of the IKAROS project
-//
-//    Copyright (C) 2012 <Daniel Myhrman>
+//    Copyright (C) 2012 <Johan Svensson>
 //
 //    This program is free software; you can redistribute it and/or modify
 //    it under the terms of the GNU General Public License as published by
@@ -21,32 +18,26 @@
 //
 
 
-#ifndef BlobCreator_
-#define BlobCreator_
+#ifndef WatchSky
+#define WatchSky_
 
 #include "IKAROS.h"
 
-class BlobCreator: public Module
+class WatchSky: public Module
 {
 public:
-    static Module * Create(Parameter * p) { return new BlobCreator(p); }
+    static Module * Create(Parameter * p) { return new WatchSky(p); }
 
-    BlobCreator(Parameter * p) : Module(p) {}
-    virtual ~BlobCreator();
+    WatchSky(Parameter * p) : Module(p) {}
+    virtual ~WatchSky();
+
     void 		Init();
     void 		Tick();
 
-    float **    input_matrix;
-    int         input_matrix_size_x;
-    int         input_matrix_size_y;
+    float ** output_matrix;
 
-    float **    output_matrix;
-    int         output_matrix_size_x;
-    int         output_matrix_size_y;
 
-    float **    internal_matrix;
-    int         internal_matrix_size_x;
-    int         internal_matrix_size_y;
+
 };
 
 #endif

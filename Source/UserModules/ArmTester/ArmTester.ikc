@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<group name="ArmTester" description="minimal example module">
+
+	<description type="text">
+		Minimal module that can be used as a start for a new module.
+		Simply change all occurrences of "MinimalModule" to the name of your new module in
+		MinimalModule.cc, MinimalModule.h and MinimalModule.ikc (this file), rename the files, and fill
+		in the new code and documentation. This module is located in the
+		UserModules directory.
+	</description>
+
+	<example description="A simple example">
+		<module
+			class="ArmTester"
+			name="ArmTester"
+		/>
+	</example>
+
+	<input name="INPUT" description="Input origin coordinates" />
+  <output name="OUTPUT" description="Input matrix of (x,y) coordinates" size="3" />
+
+	<module class="ArmTester" />
+
+	<author>
+		<name>Christian Balkenius</name>
+		<email>christian.balkenius@lucs.lu.se</email>
+		<affiliation>Lund University Cognitive Science</affiliation>
+		<homepage>http://www.lucs.lu.se/Christian.Balkenius</homepage>
+	</author>
+
+   <files>
+   		<file>ArmTester.h</file>
+   		<file>ArmTester.cc</file>
+   		<file>ArmTester.ikc</file>
+   </files>
+
+</group>
