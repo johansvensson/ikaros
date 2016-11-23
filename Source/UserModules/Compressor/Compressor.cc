@@ -1,7 +1,7 @@
 //
 //	MyModule.cc		This file is a part of the IKAROS project
 //
-//    Copyright (C) 2012 <Johan Svensson>
+//    Copyright (C) 2012 <Johan Svensson, Shan Langlais>
 //
 //    This program is free software; you can redistribute it and/or modify
 //    it under the terms of the GNU General Public License as published by
@@ -60,6 +60,7 @@ Compressor::Init()
 Compressor::~Compressor()
 {
   destroy_matrix(internal_matrix);
+  destroy_matrix(background_matrix);
 }
 
 void
@@ -77,6 +78,12 @@ Compressor::Tick()
   int j = 0;
   int out_x = 0;
   int out_y = 0;
+  float real_jump_x = 640.0/58.0;
+  float real_jump_y = 480.0/45.0;
+  float real_jump_x_cumul = real_jump_x;
+  float real_jump_y_cumul = real_jump_y;
+  int actual_jump_x = (int)real_jump_x;
+  int actual_jump_y = (int)real_jump_y;
 
   while (i < 480) {
     while (j < 640){
@@ -85,17 +92,34 @@ Compressor::Tick()
       float median = 0;
       int ind = 0;
       int even = 0;
-      for(int k=i; k < i + 11 && k < 480; k++){
-        for(int l=j; l < j+11 && l < 640; l++){
+
+      for(int k=i; k < i + actual_jump_y && k < 480; k++){
+        for(int l=j; l < j + actual_jump_x && l < 640; l++){
           values[ind] = internal_matrix[k][l];
           if (even % 2 == 0){
             ind += 1;
           }
           even += 1;
+          real_jump_x_cumul += real_jump_x;
+          if((int)real_jump_x_cumul % 11 == 1){
+            actual_jump_x = 12;
+            real_jump_x_cumul -= 1.0;
+          } else {
+            actual_jump_x = 11;
+          }
+        }
+        real_jump_y_cumul += real_jump_y;
+        if((int)real_jump_y_cumul % 11 == 1){
+          actual_jump_y = 12;
+          real_jump_y_cumul -= 1.0;
+        } else {
+          actual_jump_y = 11;
         }
       }
       median = sort(values, 60)[30];
       //Submatrix end here
+      //DELETE THE MEMORY LEAK
+      delete [] values;
       if(out_x < 58 && out_y < 45)
       //Save max to output_matrix
       if (habituate > 0){

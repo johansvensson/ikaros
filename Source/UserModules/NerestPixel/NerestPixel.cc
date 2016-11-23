@@ -36,45 +36,29 @@ NerestPixel::Init()
 {
 
   input_matrix = GetInputMatrix("INPUT");
-  input_matrix_size_x = GetInputSizeX("INPUT");
-  input_matrix_size_y = GetInputSizeY("INPUT");
 
   output_matrix = GetOutputMatrix("OUTPUT");
-  internal_matrix = create_matrix(input_matrix_size_x, input_matrix_size_y);
 
 }
 
 NerestPixel::~NerestPixel()
 {
-  destroy_matrix(internal_matrix);
 }
 
 void
 NerestPixel::Tick()
 {
-  copy_matrix(internal_matrix, input_matrix, input_matrix_size_x, input_matrix_size_y);
 
-  int max_x = 29;
-  int max_y = 22;
-  float closest = 0;
+  /* X-cordinate*/
+  output_matrix[0][0]=input_matrix[0][0];
+  /*Y-corndinate*/
+  output_matrix[0][1]=input_matrix[0][1];
 
-  for(int i = 0; i < 45; i++){
-    for(int j = 0; j < 58; j++){
-      if(internal_matrix[i][j] > closest){
-        closest = internal_matrix[i][j];
-        max_x=j;
-        max_y=i;
-      }
-    }
-  }
+  /*Weight is for the current output
+  The weight is the same value as the depth-data*/
+  output_matrix[0][2]=input_matrix[0][3];
 
 
-  if(max_x > 29){
-    output_matrix[0][0] = (max_x-29) + 180;
-  }else{
-    output_matrix[0][0] = (max_x-29)+180;
-  }
 }
-
 
 static InitClass init("NerestPixel", &NerestPixel::Create, "Source/UserModules/NerestPixel/");
