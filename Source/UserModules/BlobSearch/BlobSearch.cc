@@ -47,7 +47,7 @@ BlobSearch::Init()
   output_matrix_size_x = GetOutputSizeX("OUTPUT");
   output_matrix_size_y = GetOutputSizeY("OUTPUT");
 
-  kernel_size = 11;
+  kernel_size = 7;
 }
 
 void
