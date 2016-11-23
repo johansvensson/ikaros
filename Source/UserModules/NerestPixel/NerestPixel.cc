@@ -39,6 +39,8 @@ NerestPixel::Init()
 
   output_matrix = GetOutputMatrix("OUTPUT");
 
+  weight_output = GetOutputMatrix("WEIGHT");
+
 }
 
 NerestPixel::~NerestPixel()
@@ -56,7 +58,7 @@ NerestPixel::Tick()
 
   /*Weight is for the current output
   The weight is the same value as the depth-data*/
-  output_matrix[0][2]=input_matrix[0][3];
+  weight_output[0][0]=input_matrix[0][3];
 
 
 }
