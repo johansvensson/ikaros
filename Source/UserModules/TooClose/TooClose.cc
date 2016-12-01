@@ -46,16 +46,31 @@ TooClose::Init()
 void
 TooClose::Tick()
 {
+  if(input_matrix[0][3] < 0.2){
+    /* X-cordinate*/
+    output_matrix[0][0]=29.0;
+    /*Y-corndinate*/
+    output_matrix[0][1]=0.0;
+    /* Z-cordinate*/
+    output_matrix[0][2]=1.0;
+    /*Weight for the current output.
+    The value is set to be a high constant*/
+    weight_output[0][0]=1.0;
+  }else{
+    /*In this case the weight is set to 0.0, so those cordinates
+    are never used.
 
   /* X-cordinate*/
-  output_matrix[0][0]=input_matrix[0][0];
+  output_matrix[0][0]=1.0;
   /*Y-corndinate*/
-  output_matrix[0][1]=input_matrix[0][1];
+  output_matrix[0][1]=1.0;
+  /* Z-cordinate*/
+  output_matrix[0][2]=1.0;
+  /*Weight for the current output.
+  The value is set to be a high constant*/
+  weight_output[0][0]=0.0;
 
-  /*Weight is for the current output
-  The weight is the same value as the depth-data*/
-  weight_output[0][0]=input_matrix[0][3];
-
+  }
 
 }
 
