@@ -1,4 +1,4 @@
-//    Copyright (C) 2012 <Johan Svensson>
+//    Copyright (C) 2012 <Shan Langlais>
 //
 //    This program is free software; you can redistribute it and/or modify
 //    it under the terms of the GNU General Public License as published by
@@ -18,40 +18,24 @@
 //
 
 
-#ifndef WatchRandom_
-#define WatchRandom_
+#ifndef PolarToCartesian_
+#define PolarToCartesian_
 
 #include "IKAROS.h"
 
-class WatchRandom: public Module
+class PolarToCartesian: public Module
 {
 public:
-    static Module * Create(Parameter * p) { return new WatchRandom(p); }
+    static Module * Create(Parameter * p) { return new PolarToCartesian(p); }
 
-    WatchRandom(Parameter * p) : Module(p) {}
-    virtual ~WatchRandom();
+    PolarToCartesian(Parameter * p) : Module(p) {}
 
     void 		Init();
     void 		Tick();
 
     float **    input_matrix;
-    int         input_matrix_size_x;
-    int         input_matrix_size_y;
 
     float **    output_matrix;
-    int         output_matrix_size_x;
-    int         output_matrix_size_y;
-
-    float **    weight_output;
-
-    float **    internal_matrix;
-
-    int         tick_counter;
-    int         random;
-    float       randx;
-    float       randy;
-
-
 };
 
 #endif

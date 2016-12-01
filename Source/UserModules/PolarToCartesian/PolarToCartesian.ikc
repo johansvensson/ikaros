@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<group name="WatchRandom" description="Selects a random point from DepthBlobList">
+<group name="PolarToCartesian" description="Selects a random point from DepthBlobList">
 
 	<description type="text">
 		Minimal module that can be used as a start for a new module.
@@ -12,25 +12,24 @@
 
 	<example description="A simple example">
 		<module
-			class="WatchRandom"
-			name="WatchRandom"
+			class="PolarToCartesian"
+			name="PolarToCartesian"
 		/>
 	</example>
 
-  <input name="INPUT" description="Input matrix of (x,y) coordinates" size_x = "3" size_y = "99" />
-  <output name="OUTPUT" description="Output matrix of chosen coordinates" size_x = "2" size_y = "1" />
-	<output name="WEIGHT" description="WEIGHT" size_x = "1" size_y = "1" />
+  <input name="INPUT" description="Input matrix of (x,y) coordinates" size_x = "3" size_y = "1" />
+  <output name="OUTPUT" description="Output matrix of chosen coordinates" size_x = "3" size_y = "1" />
 
-	<module class="WatchRandom" />
+	<module class="PolarToCartesian" />
 
 	<author>
-		<name>Johan Svensson</name>
+		<name>Shan Langlais</name>
 	</author>
 
    <files>
-   		<file>WatchRandom.h</file>
-   		<file>WatchRandom.cc</file>
-   		<file>WatchRandom.ikc</file>
+   		<file>PolarToCartesian.h</file>
+   		<file>PolarToCartesian.cc</file>
+   		<file>PolarToCartesian.ikc</file>
    </files>
 
 </group>
