@@ -36,6 +36,13 @@ public:
     float **    input_matrix;
 
     float **    output_matrix;
+
+    float **    output_matrix_x;
+    float **    output_matrix_y;
+    float **    output_matrix_z;
+
+    float**     output_matrix_xy;
+    float**     output_matrix_yz;
 };
 
 #endif

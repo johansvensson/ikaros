@@ -19,6 +19,12 @@
 
   <input name="INPUT" description="Input matrix of (x,y) coordinates" size_x = "3" size_y = "1" />
   <output name="OUTPUT" description="Output matrix of chosen coordinates" size_x = "3" size_y = "1" />
+	<output name="OUTPUT_X" description="output matrix X" size_x="1" size_y="1" />
+	<output name="OUTPUT_Y" description="output matrix Y" size_x="1" size_y="1" />
+	<output name="OUTPUT_Z" description="output matrix Z" size_x="1" size_y="1" />
+
+	<output name="OUTPUT_XY" description="output matrix X" size_x="2" size_y="1" />
+	<output name="OUTPUT_YZ" description="output matrix Y" size_x="2" size_y="1" />
 
 	<module class="PolarToCartesian" />
 

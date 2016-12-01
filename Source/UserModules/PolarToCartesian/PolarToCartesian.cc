@@ -48,5 +48,12 @@ void PolarToCartesian::Tick()
   output_matrix[0][0] = x;
   output_matrix[0][1] = y;
   output_matrix[0][2] = z;
+
+  output_matrix_x = x;
+  output_matrix_y = y;
+  output_matrix_z = z;
+
+  output_matrix_xy[0][0] = [x, y];
+  output_matrix_yz[0][0] = [y, z];
 }
 static InitClass init("PolarToCartesian", &PolarToCartesian::Create, "Source/UserModules/PolarToCartesian/");
