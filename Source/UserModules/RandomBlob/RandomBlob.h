@@ -42,8 +42,10 @@ public:
     float ** weight_output;
 
     float **    internal_matrix;
-    
+
     int         tick_counter;
+
+    int randomIndex;
 };
 
 #endif

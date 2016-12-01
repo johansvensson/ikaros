@@ -45,7 +45,9 @@ RandomBlob::Init()
   //Internal matrix
   internal_matrix = create_matrix(input_matrix_size_x, input_matrix_size_y);
 
+  randomIndex = 0;
   //Tick counter
+
   tick_counter = 0;
 }
 
@@ -54,14 +56,14 @@ RandomBlob::~RandomBlob()
   destroy_matrix(internal_matrix);
 }
 
-void RandomBlom::Tick()
+void RandomBlob::Tick()
 {
   copy_matrix(internal_matrix, input_matrix, input_matrix_size_x, input_matrix_size_y);
-
+  int amount = 0;
   //Blob amount and random index calculation
   if(tick_counter > (rand()%(60-30+1) + 30)){
-    tick_counter = 0
-    int amount = 0;
+    tick_counter = 0;
+    amount = 0;
     for (int j=0; j<input_matrix_size_y; j++){
       if(internal_matrix[j][0] != -1.0){
         amount++;
@@ -70,7 +72,7 @@ void RandomBlom::Tick()
         break;
       }
     }
-    int randomIndex = (std::rand()%amount + 1);
+    randomIndex = (std::rand()%amount);
   }
 
   //Output and weight
@@ -78,10 +80,10 @@ void RandomBlom::Tick()
   output_matrix[0][1] = internal_matrix[randomIndex][1];
   output_matrix[0][2] = internal_matrix[randomIndex][2];
   if(amount != 0){
-    weight_output[0][0] = 1 - 1/amount;
+    weight_output[0][0] = 1.0 - 1.0/(float)amount;
   }
   else{
-    weight_output[0][0] = 0;
+    weight_output[0][0] = 0.0;
   }
 }
 

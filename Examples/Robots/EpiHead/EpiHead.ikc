@@ -97,6 +97,8 @@
    <!-- connections to arbiter -->
    <connection sourcemodule="BlobCreator" source="OUTPUT" targetmodule="NerestPixel" target="INPUT" />
    <conncetion sourcemodule="BlobCreator" source="OUTPUT" targetmodule="WatchRandom" target="INPUT" />
+   <conncetion sourcemodule="BlobCreator" source="OUTPUT" targetmodule="RandomBlob" target="INPUT" />
+
 
    <connection sourcemodule="NerestPixel" source="OUTPUT" targetmodule="Arbiter" target="INPUT_1" />
    <!--<connection sourcemodule="WatchRandom" source="OUTPUT" targetmodule="Arbiter" target="INPUT_2" />-->
