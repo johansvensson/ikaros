@@ -47,10 +47,6 @@ void WatchSky::Tick()
           randr = (float)(std::rand()%100);
           randr = randr / 100.0;
 
-          randx = float (29.0);
-          randy = float (22.5);
-          randr = float (0.5);
-
           tick_counter = (rand()%(60-30+1) + 30);
         }else {
           tick_counter--;
