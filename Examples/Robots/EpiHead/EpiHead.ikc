@@ -19,10 +19,7 @@
      name = "NerestPixel"
    />
 
-   <module
-     class = "TooClose"
-     name = "TooClose"
-   />
+
 
    <module
      class = "PolarToCartesian"
@@ -104,9 +101,9 @@
    <!--<connection sourcemodule="WatchRandom" source="WEIGHT" targetmodule="Arbiter" target="VALUE_2" />-->
    <connection sourcemodule="WatchSky" source="WEIGHT" targetmodule="Arbiter" target="VALUE_2" />
 
-   <connection sourcemodule="BlobCreator" source="OUTPUT" targetmodule="TooClose" target="INPUT" />
+   <!--<connection sourcemodule="BlobCreator" source="OUTPUT" targetmodule="TooClose" target="INPUT" />
      <!-- Pupil size between 8-16-->
-   <connection sourcemodule="TooClose" source="OUTPUT" targetmodule="Motor" target="PUPIL" />
+   <connection sourcemodule="NerestPixel" source="PUPILS" targetmodule="Motor" target="PUPIL" />
 
    <connection sourcemodule="Arbiter" source="OUTPUT" targetmodule="PolarToCartesian" target="INPUT" />
 

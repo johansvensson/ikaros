@@ -41,6 +41,8 @@ NerestPixel::Init()
 
   weight_output = GetOutputMatrix("WEIGHT");
 
+  pupil_output = GetOutputMatrix("PUPILS");
+
 }
 
 void
@@ -53,14 +55,19 @@ NerestPixel::Tick()
   output_matrix[0][1]=input_matrix[0][1];
 
   output_matrix[0][2]=input_matrix[0][2];
-
+  pupil_output[0][0] = 12.0;
+  pupil_output[0][1] = 12.0;
   /*Weight is for the current output
   The weight is the same value as the depth-data*/
   if(input_matrix[0][2] <= 0.0 || input_matrix[0][2] >= 1.0){
     weight_output[0][0] = 0.0;
   } else {
+    if(input_matrix[0][2] < 0.4){
+      weight_output[0][0] = 1.0;
+      pupil_output[0][0] = 16.0;
+      pupil_output[0][1] = 16.0;
+    }
     weight_output[0][0]= 1.0 - input_matrix[0][2];
-
   }
 
 

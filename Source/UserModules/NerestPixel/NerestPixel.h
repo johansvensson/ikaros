@@ -42,6 +42,8 @@ public:
 
     float **    weight_output;
 
+    float **    pupil_output;
+
 
 };
 
