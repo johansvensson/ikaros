@@ -15,6 +15,7 @@ add_subdirectory(BlobSearch)
 add_subdirectory(WatchSky)
 add_subdirectory(BlobCreator)
 add_subdirectory(ArmTester)
+add_subdirectory(PolarToCartesian)
 
 
 
