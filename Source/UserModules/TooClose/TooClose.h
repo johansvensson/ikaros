@@ -40,7 +40,6 @@ public:
 
     float **    output_matrix;
 
-    float **    weight_output;
 
 
 };
