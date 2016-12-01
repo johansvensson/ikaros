@@ -15,7 +15,7 @@
 	</example>
 
 	<input name="INPUT" description="Input" size_x = "3" size_y = "99"/>
-  <output name="OUTPUT" description="Output" size_x = "2" size_y = "1"/>
+  <output name="OUTPUT" description="Output" size_x = "3" size_y = "1"/>
 	<output name="WEIGHT" description="WEIGHT" size_x = "1" size_y = "1" />
 
 	<module class="NerestPixel" />

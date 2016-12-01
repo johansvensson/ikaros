@@ -49,6 +49,9 @@ void WatchSky::Tick()
           /* Generate two random cordinates and scales them to a valid scope */
           randx = (float)(std::rand()%58);
           randy = (float)(std::rand()%45);
+          randr = (float)(std::rand()%100);
+          randr = randr / 100.0;
+
           tick_counter = (rand()%(60-30+1) + 30);
         }else {
           tick_counter--;
@@ -59,6 +62,7 @@ void WatchSky::Tick()
           witch is to be sent to the robot */
           output_matrix[0][0] = randx;
           output_matrix[0][1] = randy;
+          output_matrix[0][2] = randr;
           weight_output[0][0] = 0.1;
 
 
