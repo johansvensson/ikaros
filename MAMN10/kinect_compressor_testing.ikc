@@ -138,9 +138,9 @@
         <object class="Image" type="fire" name="Camera" module = "Compressor" source = "OUTPUT" x="0" y="0" w="4" h="3" />
         <object class="Cross" module="BlobCreator" source="OUTPUT_TRACKER_POS" x="0" y="0" w="4" h="3" />
 
-        <object class="Plot" module="PolarToCartesian" source="OUTPUT_X" min="-5" max="5" title="X" x="4" y="0" w="2" h="2" />
-        <object class="Plot" module="PolarToCartesian" source="OUTPUT_Y" min="-2" max="2" title="Y" x="6" y="0" w="2" h="2" />
-        <object class="Plot" module="PolarToCartesian" source="OUTPUT_Z" min="-0.1" max="10" title="Z" x="8" y="0" w="2" h="2" />
+        <object class="Plot" module="PolarToCartesian" source="OUTPUT_X" min="-0.1" max="10" title="X" x="4" y="0" w="2" h="2" />
+        <object class="Plot" module="PolarToCartesian" source="OUTPUT_Y" min="-5" max="5" title="Y" x="6" y="0" w="2" h="2" />
+        <object class="Plot" module="PolarToCartesian" source="OUTPUT_Z" min="-2" max="2" title="Z" x="8" y="0" w="2" h="2" />
         <object class="Table" module="PolarToCartesian" source="OUTPUT_X" x ="4" y="2" w="2" h="1" />
         <object class="Table" module="PolarToCartesian" source="OUTPUT_Y" x ="6" y="2" w="2" h="1" />
         <object class="Table" module="PolarToCartesian" source="OUTPUT_Z" x ="8" y="2" w="2" h="1" />

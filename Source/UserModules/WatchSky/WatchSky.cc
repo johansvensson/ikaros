@@ -42,14 +42,12 @@ void WatchSky::Tick()
 {
           if(tick_counter == 0){
           /* Generate two random cordinates and scales them to a valid scope */
-          randx = (float)(std::rand()%58);
-          randy = (float)(std::rand()%45);
-          randr = (float)(std::rand()%100);
-          randr = randr / 100.0;
 
-          randx = float (29.0);
-          randy = float (22.5);
-          randr = float (0.5);
+
+          randx = (float)(rand()%(58) + 1.0);
+          randy = (float)(rand()%(45) + 1.0);
+          randr = (float)(rand()%(100-20+1) + 20);
+          randr = (float)randr/100.0;
 
           tick_counter = (rand()%(60-30+1) + 30);
         }else {
