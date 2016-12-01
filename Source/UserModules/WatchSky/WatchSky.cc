@@ -31,6 +31,7 @@ WatchSky::Init()
 {
   output_matrix = GetOutputMatrix("OUTPUT");
   weight_output = GetOutputMatrix("WEIGHT");
+  tick_counter = 1;
 
 
   std::srand(std::time(0));
@@ -44,14 +45,15 @@ WatchSky::~WatchSky()
 
 void WatchSky::Tick()
 {
+          if(tick_counter == 0){
           /* Generate two random cordinates and scales them to a valid scope */
-          float randx = (float)(std::rand()%58);
-          float randy = (float)(std::rand()%45);
+          randx = (float)(std::rand()%58);
+          randy = (float)(std::rand()%45);
+          tick_counter = (rand()%(60-30+1) + 30);
+        }else {
+          tick_counter--;
+        }
 
-          /* To be removed
-          rand_x = (float)((rand()%100)/100.0);
-          rand_y = (float)((rand()%100)/100.0);7
-          */
 
           /* Insert the radom cordinates in the output_matrix
           witch is to be sent to the robot */
