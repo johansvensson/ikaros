@@ -16,6 +16,7 @@ add_subdirectory(WatchSky)
 add_subdirectory(BlobCreator)
 add_subdirectory(ArmTester)
 add_subdirectory(PolarToCartesian)
+add_subdirectory(TooClose)
 
 
 

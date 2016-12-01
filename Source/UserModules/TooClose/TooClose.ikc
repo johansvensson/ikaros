@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<group name="TooClose" description="Calculate the nerest pixel from a Compressor-module">
+
+	<description type="text">
+		From the output from a Compressor-module. This module calculate the closest pixel and
+		sends the coordinates in a maxrix ready for Dynamixel.
+	</description>
+
+	<example description="A module to calculate the nerest pixel">
+		<module
+			class="TooClose"
+			name="TooClose"
+		/>
+	</example>
+
+	<input name="INPUT" description="Input" size_x = "3" size_y = "99"/>
+  <output name="OUTPUT" description="Output" size_x = "2" size_y = "1"/>
+	<output name="WEIGHT" description="WEIGHT" size_x = "1" size_y = "1" />
+
+	<module class="TooClose" />
+
+	<author>
+		<name>Christian Balkenius</name>
+		<email>christian.balkenius@lucs.lu.se</email>
+		<affiliation>Lund University Cognitive Science</affiliation>
+		<homepage>http://www.lucs.lu.se/Christian.Balkenius</homepage>
+	</author>
+
+   <files>
+   		<file>TooClose.h</file>
+   		<file>TooClose.cc</file>
+   		<file>TooClose.ikc</file>
+   </files>
+
+</group>
