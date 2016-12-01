@@ -57,7 +57,7 @@ TooClose::Tick()
     The value is set to be a high constant*/
     weight_output[0][0]=1.0;
   }else{
-    /*In this case the weight is set to 0.0, so those cordinates
+    /*In this case, the weight is set to 0.0, so those cordinates
     are never used.
 
   /* X-cordinate*/
