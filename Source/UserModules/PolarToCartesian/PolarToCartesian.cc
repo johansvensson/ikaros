@@ -39,19 +39,21 @@ PolarToCartesian::Init()
 
   output_matrix_xy = GetOutputMatrix("OUTPUT_XY");
   output_matrix_yz = GetOutputMatrix("OUTPUT_YZ");
+
+  output_matrix_pos = GetOutputMatrix("OUTPUT_POS");
 }
 
 void PolarToCartesian::Tick()
 {
-  float sin_phi = (float) sin((float)input_matrix[0][0] * (3.1415)/180.0);
-  float sin_theta = (float) sin((float)input_matrix[0][1] * (3.1415)/180.0);
-  float cos_phi = (float) cos((float)input_matrix[0][0] * (3.1415)/180.0);
-  float cos_theta = (float) cos((float)input_matrix[0][1] * (3.1415)/180.0);
+  float sin_phi = (float) sin(((float)input_matrix[0][0] - 29.0) * (3.1415)/180.0);
+  float sin_theta = (float) sin(((float)input_matrix[0][1] - 22.5) * (3.1415)/180.0);
+  float cos_phi = (float) cos(((float)input_matrix[0][0] - 29.0) * (3.1415)/180.0);
+  float cos_theta = (float) cos(((float)input_matrix[0][1] - 22.5) * (3.1415)/180.0);
   float r = (float) input_matrix[0][2];
 
-  float x = r*sin_theta*cos_phi;
-  float y = r*sin_theta*sin_phi;
-  float z = r*cos_phi;
+  float x = -r*sin_theta*sin_phi * 20.0;
+  float y = -r*sin_theta*cos_phi * 5.0;
+  float z = r*cos_phi * 10.0;
   output_matrix[0][0] = x;
   output_matrix[0][1] = y;
   output_matrix[0][2] = z;
@@ -64,5 +66,26 @@ void PolarToCartesian::Tick()
   output_matrix_xy[0][1] = y;
   output_matrix_yz[0][0] = y;
   output_matrix_yz[0][1] = z;
+
+  output_matrix_pos[0][0] = 1.0;
+  output_matrix_pos[0][1] = 0.0;
+  output_matrix_pos[0][2] = 0.0;
+
+  output_matrix_pos[1][0] = 0.0;
+  output_matrix_pos[1][1] = 1.0;
+  output_matrix_pos[1][2] = 0.0;
+
+  output_matrix_pos[2][0] = 0.0;
+  output_matrix_pos[2][1] = 0.0;
+  output_matrix_pos[2][2] = 1.0;
+
+  output_matrix_pos[3][0] = 0.0;
+  output_matrix_pos[3][1] = 0.0;
+  output_matrix_pos[3][2] = 0.0;
+
+  output_matrix_pos[0][3] = x;
+  output_matrix_pos[1][3] = y;
+  output_matrix_pos[2][3] = z;
+  output_matrix_pos[3][3] = 1.0;
 }
 static InitClass init("PolarToCartesian", &PolarToCartesian::Create, "Source/UserModules/PolarToCartesian/");

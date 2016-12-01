@@ -29,7 +29,6 @@ public:
     static Module * Create(Parameter * p) { return new WatchSky(p); }
 
     WatchSky(Parameter * p) : Module(p) {}
-    virtual ~WatchSky();
 
     void 		Init();
     void 		Tick();

@@ -43,6 +43,8 @@ public:
 
     float**     output_matrix_xy;
     float**     output_matrix_yz;
+
+    float **    output_matrix_pos;
 };
 
 #endif

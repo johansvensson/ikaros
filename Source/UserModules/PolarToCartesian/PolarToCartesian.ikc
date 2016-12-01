@@ -26,6 +26,8 @@
 	<output name="OUTPUT_XY" description="output matrix X" size_x="2" size_y="1" />
 	<output name="OUTPUT_YZ" description="output matrix Y" size_x="2" size_y="1" />
 
+	<output name="OUTPUT_POS" description="std pos matrix" size_x="4" size_y="4" />
+
 	<module class="PolarToCartesian" />
 
 	<author>
