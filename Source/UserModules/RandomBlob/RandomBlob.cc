@@ -54,7 +54,7 @@ RandomBlob::~RandomBlob()
   destroy_matrix(internal_matrix);
 }
 
-void RandomBlow::Tick()
+void RandomBlom::Tick()
 {
   copy_matrix(internal_matrix, input_matrix, input_matrix_size_x, input_matrix_size_y);
 
