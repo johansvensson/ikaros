@@ -30,7 +30,7 @@ void
 RandomBlob::Init()
 {
   //Input
-  input_matrix = GetOutputMatrix("INPUT");
+  input_matrix = GetInputMatrix("INPUT");
   input_matrix_size_x = GetInputSizeX("INPUT");
   input_matrix_size_y = GetInputSizeY("INPUT");
 
