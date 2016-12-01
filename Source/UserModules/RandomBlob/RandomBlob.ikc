@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<group name="RandomBlob" description="Selects a random point">
+
+	<description type="text">
+		Minimal module that can be used as a start for a new module.
+		Simply change all occurrences of "MinimalModule" to the name of your new module in
+		MinimalModule.cc, MinimalModule.h and MinimalModule.ikc (this file), rename the files, and fill
+		in the new code and documentation. This module is located in the
+		UserModules directory.
+	</description>
+
+	<example description="A simple example">
+		<module
+			class="RandomBlob"
+			name="RandomBlob"
+		/>
+	</example>
+
+	<input name="INPUT" description="Input" size_x = "3" size_y = "99" />
+  <output name="OUTPUT" description="Output matrix of chosen coordinates" size_x = "3" size_y = "1" />
+	<output name="WEIGHT" description="WEIGHT" size_x = "1" size_y = "1" />
+	<module class="RandomBlob" />
+
+	<author>
+		<name>Daniel Myhrman</name>
+	</author>
+
+   <files>
+   		<file>RandomBlob.h</file>
+   		<file>RandomBlob.cc</file>
+   		<file>RandomBlob.ikc</file>
+   </files>
+
+</group>
