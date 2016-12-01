@@ -1,4 +1,4 @@
-//    Copyright (C) 2012 <Johan Svensson>
+//    Copyright (C) 2012 <Shan Langlais>
 //
 //    This program is free software; you can redistribute it and/or modify
 //    it under the terms of the GNU General Public License as published by
@@ -18,74 +18,35 @@
 //
 
 
-#include "WatchRandom.h"
+#include "PolarToCartesian.h"
 #include <stdlib.h>
-#include <iostream>
+#include <cmath>
 
 using namespace ikaros;
 using namespace std;
 
 void
-WatchRandom::Init()
+PolarToCartesian::Init()
 {
+  //(phi, theta, r)
   input_matrix = GetInputMatrix("INPUT");
-  input_matrix_size_x = GetInputSizeX("INPUT");
-  input_matrix_size_y = GetInputSizeY("INPUT");
 
   output_matrix = GetOutputMatrix("OUTPUT");
-  output_matrix_size_x = GetOutputSizeX("OUTPUT");
-  output_matrix_size_y = GetOutputSizeY("OUTPUT");
-
-  weight_output = GetOutputMatrix("WEIGHT");
-
-  tick_counter = 0;
-  random = 0;
-  randx = 0;
-  randy = 0;
-
-
-  internal_matrix = create_matrix(input_matrix_size_x, input_matrix_size_y);
 }
 
-WatchRandom::~WatchRandom()
+void PolarToCartesian::Tick()
 {
-    destroy_matrix(internal_matrix);
+  float sin_phi = (float) sin(input_matrix[0][0] * (3.1415)/180.0);
+  float sin_theta = (float) sin(input_matrix[0][1] * (3.1415)/180.0);
+  float cos_phi = (float) cos(input_matrix[0][0] * (3.1415)/180.0);
+  float cos_theta = (float) cos(input_matrix[0][1] * (3.1415)/180.0);
+  float r = (float) input_matrix[0][2];
+
+  float x = r*sin_theta*cos_phi;
+  float y = r*sin_theta*sin_phi;
+  float z = r*cos_phi;
+  output_matrix[0][0] = x;
+  output_matrix[0][1] = y;
+  output_matrix[0][2] = z;
 }
-
-void WatchRandom::Tick()
-{
-    copy_matrix(internal_matrix, input_matrix, input_matrix_size_x, input_matrix_size_y);
-    //Set all in output_matrix to -1
-    for (int j=0; j<output_matrix_size_y; j++)
-        for (int i=0; i<output_matrix_size_x; i++)
-              output_matrix[j][i] = -1.0;
-    tick_counter++;
-    int amount = 0;
-    if(tick_counter > (rand()%(60-30+1) + 30)){
-          tick_counter = 0;
-          /* count the amount of valid points in matrix */
-          for (int j=0; j<input_matrix_size_y;j++){
-            if(internal_matrix[j][0] != -1.0){
-              amount++;
-            }
-          }
-          /* random int between 0 and amount  */
-          random = (int)rand()%(amount+1);
-
-    }
-
-    //Calculate weight
-    float weight = 0.0;
-    weight = 1.0 - 1.0/amount;
-    weight_output[0][0] = weight;
-    /* Inserting the the random point from internal_matrix to output_matrix */
-    if(amount > 0){
-      output_matrix[0][0] = 0.0;//internal_matrix[random][1]
-      output_matrix[0][1] = 0.0;//internal_matrix[random][1]
-      //output_matrix[0][2] = weight;
-    }
-
-
-}
-
-static InitClass init("WatchRandom", &WatchRandom::Create, "Source/UserModules/WatchRandom/");
+static InitClass init("PolarToCartesian", &PolarToCartesian::Create, "Source/UserModules/PolarToCartesian/");
