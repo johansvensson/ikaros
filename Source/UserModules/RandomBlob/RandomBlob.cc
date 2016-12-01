@@ -49,12 +49,12 @@ RandomBlob::Init()
   tick_counter = 0;
 }
 
-WatchRandom::~WatchRandom()
+RandomBlob::~RandomBlob()
 {
   destroy_matrix(internal_matrix);
 }
 
-void WatchRandom::Tick()
+void RandomBlow::Tick()
 {
   copy_matrix(internal_matrix, input_matrix, input_matrix_size_x, input_matrix_size_y);
 

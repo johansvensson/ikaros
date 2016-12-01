@@ -6,7 +6,6 @@ add_subdirectory(NearestBlob)
 add_subdirectory(ToLineCombination)
 add_subdirectory(ToAngle)
 add_subdirectory(VarAngFreq)
-add_subdirectory(WatchRandom)
 add_subdirectory(LowResBlobList)
 add_subdirectory(SpeedFunction)
 add_subdirectory(Compressor)
@@ -17,6 +16,7 @@ add_subdirectory(BlobCreator)
 add_subdirectory(ArmTester)
 add_subdirectory(PolarToCartesian)
 add_subdirectory(TooClose)
+add_subdirectory(RandomBlob)
 
 
 
