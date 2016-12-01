@@ -165,7 +165,7 @@
         <connection sourcemodule = "GuardNeckEyes"  source = "OUTPUT" targetmodule = "SC_GoalPosition"  target = "INPUT" />
 
 
-    <module class = "Constant" name = "N_MovingSpeed" data = "0.05 0.3 0.3 0.3" />
+    <module class = "Constant" name = "N_MovingSpeed" data = "0.05 0.07 0.3 0.3" />
 		<connection sourcemodule = "N_MovingSpeed"  source = "OUTPUT" targetmodule = "NeckEyes"  target = "MOVING_SPEED" delay = "0" />
 
     <module class = "Constant" name = "N_TorqueLimit" data = "0.7 0.7 0.7 0.7" />
