@@ -43,10 +43,10 @@ PolarToCartesian::Init()
 
 void PolarToCartesian::Tick()
 {
-  float sin_phi = (float) sin(input_matrix[0][0] * (3.1415)/180.0);
-  float sin_theta = (float) sin(input_matrix[0][1] * (3.1415)/180.0);
-  float cos_phi = (float) cos(input_matrix[0][0] * (3.1415)/180.0);
-  float cos_theta = (float) cos(input_matrix[0][1] * (3.1415)/180.0);
+  float sin_phi = (float) sin((float)input_matrix[0][0] * (3.1415)/180.0);
+  float sin_theta = (float) sin((float)input_matrix[0][1] * (3.1415)/180.0);
+  float cos_phi = (float) cos((float)input_matrix[0][0] * (3.1415)/180.0);
+  float cos_theta = (float) cos((float)input_matrix[0][1] * (3.1415)/180.0);
   float r = (float) input_matrix[0][2];
 
   float x = r*sin_theta*cos_phi;
