@@ -104,7 +104,7 @@ BlobCreator::Tick()
     if(internal_matrix[j][0] != -1.0 && internal_matrix[j][1] != -1.0){
       output_matrix[k][0] = (float)internal_matrix[j][0]; //for visualization
       output_matrix[k][1] = (float)internal_matrix[j][1]; // this too
-      //output_matrix[k][2] = internal_matrix[j][2];
+      output_matrix[k][2] = (float)internal_matrix[j][2];
       k++;
     }
   }
@@ -112,7 +112,7 @@ BlobCreator::Tick()
   for (int i = k; i < output_matrix_size_y; i++){
     output_matrix[i][0] = -1.0;
     output_matrix[i][1] = -1.0;
-    //output_matrix[k][2] = -1.0;
+    output_matrix[i][2] = -1.0;
   }
 
   while(flag){
