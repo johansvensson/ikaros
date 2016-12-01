@@ -44,13 +44,14 @@ TooClose::Init()
 void
 TooClose::Tick()
 {
-  if(input_matrix[0][3] < 0.2){
-    output_matrix[0][0]= 12.0;
-    output_matrix[0][1]= 12.0;
+  if(input_matrix[0][2] < 0.3 && input_matrix[0][2] > 0.0){
+    output_matrix[0][0]= 16.0;
+    output_matrix[0][1]= 16.0;
 }
 else{
   output_matrix[0][0]= 8.0;
   output_matrix[0][1]= 8.0;
+}
 }
 
 static InitClass init("TooClose", &TooClose::Create, "Source/UserModules/TooClose/");

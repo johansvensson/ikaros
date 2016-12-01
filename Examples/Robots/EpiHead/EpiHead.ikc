@@ -2,13 +2,7 @@
 
 <group title="Epi Head">
 
-  <module
-    class = "Constant"
-    name = "Pupil"
-    data = "12 12"
-  />
-  <!-- Pupil size between 8-16-->
-  <connection sourcemodule = "Pupil" source = "OUTPUT" targetmodule = "Motor" target = "PUPIL" />
+
 
 
     <description>
@@ -110,8 +104,9 @@
    <!--<connection sourcemodule="WatchRandom" source="WEIGHT" targetmodule="Arbiter" target="VALUE_2" />-->
    <connection sourcemodule="WatchSky" source="WEIGHT" targetmodule="Arbiter" target="VALUE_2" />
 
+   <connection sourcemodule="BlobCreator" source="OUTPUT" targetmodule="TooClose" target="INPUT" />
+     <!-- Pupil size between 8-16-->
    <connection sourcemodule="TooClose" source="OUTPUT" targetmodule="Motor" target="PUPIL" />
-
 
    <connection sourcemodule="Arbiter" source="OUTPUT" targetmodule="PolarToCartesian" target="INPUT" />
 
