@@ -25,10 +25,10 @@
      name = "NerestPixel"
    />
 
-   <!--<module
-     class = "WatchRandom"
-     name = "WatchRandom"
-   />-->
+   <module
+     class = "TooClose"
+     name = "TooClose"
+   />
 
    <module
      class = "PolarToCartesian"
