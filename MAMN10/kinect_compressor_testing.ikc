@@ -32,20 +32,26 @@
       name = "BlobSearch"
     />
 
-    <!--<module
+    <module
       class = "NerestPixel"
       name = "NerestPixel"
     />
 
-    <module
+    <!--<module
       class = "WatchRandom"
       name = "WatchRandom"
-    />
+    />-->
 
     <module
       class = "Arbiter"
       name = "Arbiter"
-    />-->
+      no_of_inputs = "2"
+    />
+
+    <module
+      class = "WatchSky"
+      name = "WatchSky"
+    />
 
     <module
         class 			= "Kinect"
@@ -100,17 +106,20 @@
     <connection sourcemodule="ArmTester" source="OUTPUT" targetmodule="Dynamixel" target="GOAL_POSITION" />-->
 
     <!-- connections to arbiter -->
-    <!--<connection sourcemodule="BlobCreator" source="OUTPUT" targetmodule="NerestPixel" target="INPUT" />
+    <connection sourcemodule="BlobCreator" source="OUTPUT" targetmodule="NerestPixel" target="INPUT" />
     <conncetion sourcemodule="BlobCreator" source="OUTPUT" targetmodule="WatchRandom" target="INPUT" />
 
     <connection sourcemodule="NerestPixel" source="OUTPUT" targetmodule="Arbiter" target="INPUT_1" />
-    <connection sourcemodule="WatchRandom" source="OUTPUT" targetmodule="Arbiter" target="INPUT_2" />
+    <!--<connection sourcemodule="WatchRandom" source="OUTPUT" targetmodule="Arbiter" target="INPUT_2" />-->
+    <connection sourcemodule="WatchSky" source="OUTPUT" targetmodule="Arbiter" target="INPUT_2" />
 
     <connection sourcemodule="NerestPixel" source="WEIGHT" targetmodule="Arbiter" target="VALUE_1" />
-    <connection sourcemodule="WatchRandom" source="WEIGHT" targetmodule="Arbiter" target="VALUE_2" />
+    <!--<connection sourcemodule="WatchRandom" source="WEIGHT" targetmodule="Arbiter" target="VALUE_2" />-->
+    <connection sourcemodule="WatchSky" source="WEIGHT" targetmodule="Arbiter" target="VALUE_2" />
 
-    <connection sourcemodule="Arbiter" source="OUTPUT" targetmodule="ArmTester" target="GOAL_POSITION" />-->
-    <connection sourcemodule="BlobCreator" source="OUTPUT" targetmodule="ArmTester" target="GOAL_POSITION" />
+
+    <connection sourcemodule="Arbiter" source="OUTPUT" targetmodule="ArmTester" target="GOAL_POSITION" />
+  <!--<connection sourcemodule="BlobCreator" source="OUTPUT" targetmodule="ArmTester" target="GOAL_POSITION" />-->
     <connection sourcemodule="Dynamixel" source="FEEDBACK_PRESENT_POSITION" targetmodule="ArmTester" target="PRESENT_POSITION" />
     <connection sourcemodule="ArmTester" source="GOAL_POSITION_OUTPUT" targetmodule="Dynamixel" target="GOAL_POSITION"/>
     <connection sourcemodule="ArmTester" source="GOAL_SPEED_OUTPUT" targetmodule="Dynamixel" target="MOVING_SPEED"/>

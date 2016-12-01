@@ -36,6 +36,9 @@ public:
 
     float ** output_matrix;
     float ** weight_output;
+    int tick_counter;
+    float randy;
+    float randx;
 
 
 };
