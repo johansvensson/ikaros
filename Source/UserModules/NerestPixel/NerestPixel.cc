@@ -52,6 +52,8 @@ NerestPixel::Tick()
   /*Y-corndinate*/
   output_matrix[0][1]=input_matrix[0][1];
 
+  output_matrix[0][2]=input_matrix[0][2];
+
   /*Weight is for the current output
   The weight is the same value as the depth-data*/
   weight_output[0][0]=input_matrix[0][3];

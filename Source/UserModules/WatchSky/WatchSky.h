@@ -39,6 +39,7 @@ public:
     int tick_counter;
     float randy;
     float randx;
+    float randr;
 
 
 };
