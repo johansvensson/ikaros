@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<group name="FastMovement" description="Selects a random point">
+
+	<description type="text">
+		Minimal module that can be used as a start for a new module.
+		Simply change all occurrences of "MinimalModule" to the name of your new module in
+		MinimalModule.cc, MinimalModule.h and MinimalModule.ikc (this file), rename the files, and fill
+		in the new code and documentation. This module is located in the
+		UserModules directory.
+	</description>
+
+	<example description="A simple example">
+		<module
+			class="FastMovement"
+			name="FastMovement"
+		/>
+	</example>
+
+	<input name="INPUT" description="Input" size_x = "3" size_y = "99" />
+  <output name="OUTPUT" description="Output matrix of chosen coordinates" size_x = "3" size_y = "1" />
+	<output name="WEIGHT" description="WEIGHT" size_x = "1" size_y = "1" />
+	<module class="FastMovement" />
+
+	<author>
+		<name>Daniel Myhrman</name>
+	</author>
+
+   <files>
+   		<file>FastMovement.h</file>
+   		<file>FastMovement.cc</file>
+   		<file>FastMovement.ikc</file>
+   </files>
+
+</group>
