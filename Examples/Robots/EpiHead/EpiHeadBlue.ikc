@@ -1,12 +1,14 @@
 <?xml version = "1.0"?>
 
 <group>
-	
+
     <description>
         WARNING. These modules is under development and can be change anytime!
 	 </description>
 
     <input  name="TARGET"               targetmodule="GazeController"           target="INPUT" />
+		<input  name="PUPIL"               targetmodule="mmToDegrees"           target="INPUT" />
+
     <output name="FEEDBACK_POSITION"    sourcemodule="SC_FB_PresentPosition"    source="OUTPUT" />
 
 
@@ -24,7 +26,7 @@
 
     <_module class = "Constant" name = "P_GoalPosMM" outputsize = "2" data = "9 6"  />
 
-		<module
+		<_module
 			class		=	"FunctionGenerator"
 			name		=	"P_GoalPosMM"
 			type		=	"sin"
@@ -38,7 +40,7 @@
         class = "LinearSplines"
         name = "mmToDegrees"
         points = "
-            4.84	80	4.88	80; 
+            4.84	80	4.88	80;
             5.73	70	5.87	70;
             7.15	60	7.05	60;
             8.35	50	8.33	50;
@@ -48,13 +50,13 @@
             14.59	10	14.96	10;
             16.33	0	16.22	0"
     />
-        <connection sourcemodule = "P_GoalPosMM"  source = "OUTPUT" targetmodule = "mmToDegrees"  target = "INPUT" />
-        <connection sourcemodule = "P_GoalPosMM"  source = "OUTPUT" targetmodule = "mmToDegrees"  target = "INPUT" />
+        <_connection sourcemodule = "P_GoalPosMM"  source = "OUTPUT" targetmodule = "mmToDegrees"  target = "INPUT" />
+        <_connection sourcemodule = "P_GoalPosMM"  source = "OUTPUT" targetmodule = "mmToDegrees"  target = "INPUT" />
 
     <module
         class = "MotionGuard"
         name = "GuardPupil"
-        max_speed = "2"
+        max_speed = "100"
         _input_limit_min = "190 190"
         _input_limit_max = "250 250"
         start_up_time = "1"
@@ -68,8 +70,9 @@
 		class="ServoConnector"
 		name="SC_P_GoalPosition"
 		connector   =   "1 2"
-        inverted    =   "0 0" 
-        offset      =   "210 210" 
+		pre_inverted    =   "0 0"
+		post_inverted    =   "0 0"
+        offset      =   "210 210"
         output_size =   "2"
 	/>
         <connection sourcemodule = "GuardPupil"  source = "OUTPUT" targetmodule = "SC_P_GoalPosition"  target = "INPUT" />
@@ -81,7 +84,7 @@
      <module
         class = "Dynamixel"
         name = "Pupil"
-    	device  = "/dev/cu.usbserial-A501EKIZ"
+    	device  = "/dev/ttyUSB0"
         index_mode = "indirect"
         print_info ="full"
         feedback ="false"
@@ -100,8 +103,9 @@
 			class="ServoConnector"
 			name="SC_FB_P_PresentPosition"
 			connector   =   "1 2"
-            inverted    =   "0 0" 
-            offset      =   "-210 -210" 
+			pre_inverted    =   "0 0"
+			post_inverted    =   "0 0"
+			            offset      =   "-210 -210"
             output_size =   "2"
 	/>
         <connection sourcemodule = "Pupil"  source = "FEEDBACK_PRESENT_POSITION" targetmodule = "SC_FB_P_PresentPosition"  target = "INPUT" />
@@ -125,7 +129,7 @@
 
 	    <_connection sourcemodule = "PupilControl"  source = "CG_OUTPUT" targetmodule = "GuardPupil"  target = "INPUT" />
     	<_connection sourcemodule = "PupilControl"  source = "CG_OUTPUT" targetmodule = "GuardPupil"  target = "INPUT" />
-     
+
     <view name="Parasympathetic Circuit">
         <object class="Plot" title="Response CG (Constriction)" module="PupilControl" source="CG_OUTPUT" x="0" y="1" w="4" _min = "180" max="300" />
         <object class="Plot" title="Response SCG (Dilation)" module="PupilControl" source="SCG_OUTPUT" x="0" y="2" w="4" _min = "180" max="300" />
@@ -137,29 +141,31 @@
     <module
         class = "Dynamixel"
         name = "NeckEyes"
-    	device  = "/dev/cu.usbserial-FTU7LUDO"
+    	device  = "/dev/ttyUSB1"
         index_mode = "indirect"
         print_info ="minimal"
         feedback ="true"
     	baud_rate = "1000000"
     	angle_unit = "degrees"
-    	start_up_delay = "20" 	
+    	start_up_delay = "20"
     	max_servo_id = "5"
-    />  
+    />
     <connection sourcemodule = "SC_GoalPosition" source = "OUTPUT" targetmodule = "NeckEyes" target = "GOAL_POSITION" />
 
     <module
 			class="ServoConnector"
 			name="SC_GoalPosition"
 			connector   =   "1 2 3 4"
-            inverted    =   "0 0 0 0" 
-            offset      =   "180 180 180 180" 
+            pre_inverted    =   "0 0 0 0"
+						post_inverted    =   "0 0 0 0"
+
+            offset      =   "180 180 180 180"
             output_size =   "4"
 	/>
         <connection sourcemodule = "GuardNeckEyes"  source = "OUTPUT" targetmodule = "SC_GoalPosition"  target = "INPUT" />
 
 
-    <module class = "Constant" name = "N_MovingSpeed" data = "0.02 0.02 0.02 0.02" />
+    <module class = "Constant" name = "N_MovingSpeed" data = "0.05 0.3 0.3 0.3" />
 		<connection sourcemodule = "N_MovingSpeed"  source = "OUTPUT" targetmodule = "NeckEyes"  target = "MOVING_SPEED" delay = "0" />
 
     <module class = "Constant" name = "N_TorqueLimit" data = "0.7 0.7 0.7 0.7" />
@@ -184,11 +190,11 @@
 			class="ServoConnector"
 			name="SC_FB_PresentPosition"
 			connector   =   "1 2 3 4"
-            inverted    =   "0 0 0 0" 
-            offset      =   "-180 -180 -180 -180" 
+			pre_inverted    =   "0 0 0 0"
+			post_inverted    =   "0 0 0 0"
+            offset      =   "-180 -180 -180 -180"
             output_size =   "4"
 	/>
         <connection sourcemodule = "NeckEyes"  source = "FEEDBACK_PRESENT_POSITION" targetmodule = "SC_FB_PresentPosition"  target = "INPUT" />
 
 </group>
- 
