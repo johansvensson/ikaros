@@ -33,9 +33,9 @@ FastMovement::Init()
   input_matrix_size_x = GetInputSizeX("INPUT");
   input_matrix_size_y = GetInputSizeY("INPUT");
   //Matrix from ChangeDetector
-  change_matrix = GetInputMatrix("INPUT");
-  change_matrix_size_x = GetInputSizeX("INPUT");
-  change_matrix_size_y = GetInputSizeY("INPUT");
+  change_matrix = GetInputMatrix("INPUT1");
+  change_matrix_size_x = GetInputSizeX("INPUT1");
+  change_matrix_size_y = GetInputSizeY("INPUT1");
   //Output
   output_matrix = GetOutputMatrix("OUTPUT");
 

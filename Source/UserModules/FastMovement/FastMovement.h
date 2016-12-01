@@ -37,13 +37,13 @@ public:
     int input_matrix_size_x;
     int input_matrix_size_y;
 
+    float ** change_matrix;
+    int change_matrix_size_x;
+    int change_matrix_size_y;
+
     float ** output_matrix;
 
     float ** weight_output;
-
-    float **    internal_matrix;
-
-    int         tick_counter;
 };
 
 #endif
