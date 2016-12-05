@@ -51,6 +51,8 @@ BlobCreator::Init()
   internal_matrix = create_matrix(input_matrix_size_x, input_matrix_size_y);
   internal_matrix_size_x = input_matrix_size_x;
   internal_matrix_size_y = input_matrix_size_y;
+
+  output_matrix_distance = GetOutputMatrix("DISTANCE");
 }
 
 BlobCreator::~BlobCreator()
@@ -64,6 +66,21 @@ BlobCreator::Tick()
   copy_matrix(internal_matrix, input_matrix, input_matrix_size_x, input_matrix_size_y);
   float temp = 10.0;
   bool flag = true;
+
+  float min = 1.0;
+
+  for (int i = 0; i < internal_matrix_size_y; i++){
+    for (int j = 0; j < internal_matrix_size_x; j++){
+      if (internal_matrix[j][i] < min)
+        min = internal_matrix[j][i];
+    }
+  }
+
+  if(min <= 0.0 || min => 1.0){
+    min = 1.0;
+  }
+
+  output_matrix_distance[0][0] = min;
 
   // for (int i = 0; i < input_matrix_size_y; i++){
   //   if(input_matrix[i][1] == 0.0){

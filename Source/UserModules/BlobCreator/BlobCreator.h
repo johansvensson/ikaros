@@ -51,6 +51,8 @@ public:
     float **    internal_matrix;
     int         internal_matrix_size_x;
     int         internal_matrix_size_y;
+
+    float **    output_matrix_distance;
 };
 
 #endif
