@@ -77,7 +77,7 @@ BlobCreator::Tick()
     }
   }
 
-  if(min <= 0.0 || min => 1.0){
+  if(min <= 0.0 || min >= 1.0){
     min = 1.0;
   }
 
