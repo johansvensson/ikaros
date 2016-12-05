@@ -68,6 +68,7 @@ BlobCreator::Tick()
   bool flag = true;
 
   float min = 1.0;
+  float filter = 0.0;
 
   for (int i = 0; i < internal_matrix_size_y; i++){
     for (int j = 0; j < internal_matrix_size_x; j++){
@@ -80,7 +81,11 @@ BlobCreator::Tick()
     min = 1.0;
   }
 
+  filter = -25.0 * min + 30.0;
+
   output_matrix_distance[0][0] = min;
+
+
 
   // for (int i = 0; i < input_matrix_size_y; i++){
   //   if(input_matrix[i][1] == 0.0){
@@ -108,7 +113,7 @@ BlobCreator::Tick()
     temp = (float)internal_matrix[i][0];
     for(int j = i+1; j < internal_matrix_size_y; j++){
       //specication of selection
-      if(10.0 > fabs(temp - internal_matrix[j][0]) || internal_matrix[j][1] == 0.0){
+      if(filter > fabs(temp - internal_matrix[j][0]) || internal_matrix[j][1] == 0.0){
         internal_matrix[j][0] = -1.0;
         internal_matrix[j][1] = -1.0;
         internal_matrix[j][2] = -1.0;
