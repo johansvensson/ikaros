@@ -39,7 +39,7 @@
     />
 
     <!-- ********************************* SYMPATHETIC COMPONENT ********************************* -->
-    
+
     <module
         class="Nucleus"
         name="IML"
@@ -52,7 +52,7 @@
     />
 
     <!-- IML => SCG -->
-    
+
     <connection sourcemodule="IML" source="OUTPUT" targetmodule="SCG" target="EXCITATION" />
 
     <module
@@ -61,4 +61,3 @@
     />
 
 </group>
-

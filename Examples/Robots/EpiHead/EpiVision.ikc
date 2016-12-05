@@ -6,13 +6,13 @@
         WARNING. These modules is under development and can be change anytime!
 	 </description>
 
-    <!-- FOCUS is realtion to camera. FIX This! --> 
+    <!-- FOCUS is realtion to camera. FIX This! -->
     <output name="FOCUS" sourcemodule="MarkerTracker" source="MATRIX" />
 
     <!-- Vision -->
 	<module
 		class   = "InputVideo"
-		name	= "CAMERA"			
+		name	= "CAMERA"
 		size_x  = "640"
 		size_y  = "480"
 		_size_x  = "320"
@@ -20,9 +20,9 @@
 		list_devices = "yes"
 		id ="0"
 		frame_rate = "15"
-		_frame_rate = "30"  
+		_frame_rate = "30"
 	/>
-    
+
     <!-- Detectors -->
     <_module class = "MPIFaceDetector" name = "FaceDetector" period ="1000"/>
     	<_connection sourcemodule="CAMERA" source="INTENSITY" targetmodule="FaceDetector" target="INPUT" delay="0"/>
@@ -30,7 +30,7 @@
 	<module
 		class       = "MarkerTracker"
 		name        = "MarkerTracker"
-		calibration = "640 480 351.87977 249.88640 621.54895 621.65284 -0.13228   -0.02552   0.00099   -0.00169  0.00000 0 10"	
+		calibration = "640 480 351.87977 249.88640 621.54895 621.65284 -0.13228   -0.02552   0.00099   -0.00169  0.00000 0 10"
 		max_markers	="1"
 		sort    = "no"
        	_comment_marker_size = "0 57 60; 1000 2000 25"
@@ -60,10 +60,9 @@
     />
     <connection sourcemodule="CAMERA" source="INTENSITY" targetmodule="PupilControl" target="PTA" />
 
-    <view name="Parasympathetic Circuit">
+    <!--<view name="Parasympathetic Circuit">
         <object class="Plot" title="Response CG (Constriction)" module="PupilControl" source="CG_OUTPUT" x="0" y="1" w="4" _min = "180" max="300" />
         <object class="Plot" title="Response SCG (Dilation)" module="PupilControl" source="SCG_OUTPUT" x="0" y="2" w="4" _min = "180" max="300" />
-    </view>
-   
+    </view>-->
+
 </group>
- 

@@ -130,10 +130,10 @@
 	    <_connection sourcemodule = "PupilControl"  source = "CG_OUTPUT" targetmodule = "GuardPupil"  target = "INPUT" />
     	<_connection sourcemodule = "PupilControl"  source = "CG_OUTPUT" targetmodule = "GuardPupil"  target = "INPUT" />
 
-    <view name="Parasympathetic Circuit">
+    <!--<view name="Parasympathetic Circuit">
         <object class="Plot" title="Response CG (Constriction)" module="PupilControl" source="CG_OUTPUT" x="0" y="1" w="4" _min = "180" max="300" />
         <object class="Plot" title="Response SCG (Dilation)" module="PupilControl" source="SCG_OUTPUT" x="0" y="2" w="4" _min = "180" max="300" />
-    </view>
+    </view>-->
 
 
     <!-- Modules in dynamixel format -->

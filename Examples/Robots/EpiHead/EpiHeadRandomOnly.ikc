@@ -89,6 +89,12 @@
       data = "1.0"
     />
 
+    <module
+      class = "Constant"
+      name = "FixPupils"
+      data = "8.0 8.0"
+    />
+
    <!--<connection sourcemodule="Low" source="OUTPUT" targetmodule="Dynamixel" target="TORQUE_LIMIT" />
    <connection sourcemodule="High" source="OUTPUT" targetmodule="Dynamixel" target="MOVING_SPEED" />-->
 
@@ -119,7 +125,7 @@
 
    <!--<connection sourcemodule="BlobCreator" source="OUTPUT" targetmodule="TooClose" target="INPUT" />
      <!-- Pupil size between 8-16-->
-   <connection sourcemodule="NerestPixel" source="PUPILS" targetmodule="Motor" target="PUPIL" />
+   <connection sourcemodule="FixPupils" source="OUTPUT" targetmodule="Motor" target="PUPIL" />
 
    <connection sourcemodule="Arbiter" source="OUTPUT" targetmodule="PolarToCartesian" target="INPUT" />
 
