@@ -52,7 +52,7 @@ void PolarToCartesian::Tick()
   float r = (float) input_matrix[0][2];
 
   float y = r*sin_theta*sin_phi * 20.0;
-  float z = -r*sin_theta*cos_phi * 12.0;
+  float z = -r*sin_theta*cos_phi * 7.0;
   float x = r*cos_phi * 7.0;
   output_matrix[0][0] = x;
   output_matrix[0][1] = y;

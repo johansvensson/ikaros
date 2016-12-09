@@ -5,7 +5,7 @@
     <description>
         WARNING. These modules is under development and can be change anytime!
 	 </description>
-	
+
     <input  name="TARGET"               targetmodule="GazeController"        target="INPUT" />
     <output name="FEEDBACK_POSITION"    sourcemodule="GazeController"        source="OUTPUT" />
 
@@ -18,4 +18,3 @@
      />
 
 </group>
- 

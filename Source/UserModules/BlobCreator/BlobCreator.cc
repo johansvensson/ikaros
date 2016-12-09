@@ -81,7 +81,7 @@ BlobCreator::Tick()
     min = 1.0;
   }
 
-  filter = -25.0 * min + 30.0;
+  filter = -45.0 * min + 50.0;
 
   output_matrix_distance[0][0] = min;
 

@@ -30,7 +30,7 @@
 
 	<module class = "Constant" name = "P_TorqueEnable" outputsize = "2" data = "1 1" />
 		<connection sourcemodule = "P_TorqueEnable"  source = "OUTPUT" targetmodule = "Pupil"  target = "TORQUE_ENABLE" />
-    
+
     <module class = "Constant" name = "P_MovingSpeed" outputsize = "2" data = "1 1" />
 		<connection sourcemodule = "P_MovingSpeed"  source = "OUTPUT" targetmodule = "Pupil"  target = "MOVING_SPEED" />
 
@@ -51,4 +51,3 @@
 
 
 </group>
-
