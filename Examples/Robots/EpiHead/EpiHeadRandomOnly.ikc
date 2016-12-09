@@ -9,15 +9,7 @@
         WARNING. These modules is under development and can be change anytime!
 	 </description>
 
-   <module
-     class = "BlobSearch"
-     name = "BlobSearch"
-   />
 
-   <module
-     class = "NerestPixel"
-     name = "NerestPixel"
-   />
 
    <!--<module
      class = "RandomBlob"
@@ -34,7 +26,7 @@
    <module
      class = "Arbiter"
      name = "Arbiter"
-     no_of_inputs = "2"
+     no_of_inputs = "1"
    />
 
    <module
@@ -42,12 +34,7 @@
      name = "WatchSky"
    />
 
-   <module
-       class 			= "Kinect"
-       name 			= "Kinect"
-       mode            = "raw"
-       xtion           = "false"
-    />
+
 
    <module
        class 			= "Constant"
@@ -56,15 +43,9 @@
        outputsize      = "1"
    />
 
-   <module
-       class = "Compressor"
-       name = "Compressor"
-   />
 
-   <module
-     class = "BlobCreator"
-     name = "BlobCreator"
-   />
+
+
 
    <module
      class = "Constant"
@@ -89,37 +70,33 @@
       data = "1.0"
     />
 
+    <module
+      class = "Constant"
+      name = "FixPupils"
+      data = "8.0 8.0"
+    />
+
    <!--<connection sourcemodule="Low" source="OUTPUT" targetmodule="Dynamixel" target="TORQUE_LIMIT" />
    <connection sourcemodule="High" source="OUTPUT" targetmodule="Dynamixel" target="MOVING_SPEED" />-->
-
-   <connection sourcemodule="Kinect" source="DEPTH" targetmodule="Compressor" target="INPUT" />
-   <connection sourcemodule="Compressor" source="OUTPUT" targetmodule="BlobSearch" target="INPUT" />
-   <connection sourcemodule="BlobSearch" source="OUTPUT" targetmodule="BlobCreator" target="INPUT" />
 
    <!--<connection sourcemodule="Bl    <connection sourcemodule="BlobCreator" source="OUTPUT" targetmodule="Multiply" target="INPUT1" />
    <connection sourcemodule="MulConstCross" source="OUTPUT" targetmodule="Multiply" target="INPUT2" />obCreator" source="OUTPUT" targetmodule="ArmTester" target="INPUT" />
    <connection sourcemodule="ArmTester" source="OUTPUT" targetmodule="Dynamixel" target="GOAL_POSITION" />-->
 
    <!-- connections to arbiter -->
-   <connection sourcemodule="BlobCreator" source="OUTPUT" targetmodule="NerestPixel" target="INPUT" />
-   <conncetion sourcemodule="BlobCreator" source="OUTPUT" targetmodule="WatchRandom" target="INPUT" />
-   <conncetion sourcemodule="BlobCreator" source="OUTPUT" targetmodule="RandomBlob" target="INPUT" />
 
-
-   <connection sourcemodule="NerestPixel" source="OUTPUT" targetmodule="Arbiter" target="INPUT_1" />
    <!--<connection sourcemodule="WatchRandom" source="OUTPUT" targetmodule="Arbiter" target="INPUT_2" />-->
-   <connection sourcemodule="WatchSky" source="OUTPUT" targetmodule="Arbiter" target="INPUT_2" />
+   <connection sourcemodule="WatchSky" source="OUTPUT" targetmodule="Arbiter" target="INPUT_1" />
    <!--<connection sourcemodule="RandomBlob" source="OUTPUT" targetmodule="Arbiter" target="INPUT_3" />-->
 
-   <connection sourcemodule="NerestPixel" source="WEIGHT" targetmodule="Arbiter" target="VALUE_1" />
+   <connection sourcemodule="WatchSky" source="WEIGHT" targetmodule="Arbiter" target="VALUE_1" />
    <!--<connection sourcemodule="WatchRandom" source="WEIGHT" targetmodule="Arbiter" target="VALUE_2" />-->
-   <connection sourcemodule="HighWeight" source="OUTPUT" targetmodule="Arbiter" target="VALUE_2" />
    <!--<connection sourcemodule="WatchSky" source="WEIGHT" targetmodule="Arbiter" target="VALUE_2" />-->
   <!--<connection sourcemodule="RandomBlob" source="WEIGHT" taretmodule="Arbiter" target="VALUE_3" />-->
 
    <!--<connection sourcemodule="BlobCreator" source="OUTPUT" targetmodule="TooClose" target="INPUT" />
      <!-- Pupil size between 8-16-->
-   <connection sourcemodule="NerestPixel" source="PUPILS" targetmodule="Motor" target="PUPIL" />
+   <connection sourcemodule="FixPupils" source="OUTPUT" targetmodule="Motor" target="PUPIL" />
 
    <connection sourcemodule="Arbiter" source="OUTPUT" targetmodule="PolarToCartesian" target="INPUT" />
 
