@@ -92,4 +92,5 @@ void RandomBlob::Tick()
   }
 }
 
+
 static InitClass init("RandomBlob", &RandomBlob::Create, "Source/UserModules/RandomBlob/");
