@@ -84,7 +84,7 @@
      <module
         class = "Dynamixel"
         name = "Pupil"
-    	device  = "/dev/ttyUSB0"
+    	device  = "/dev/ttyUSB1"
         index_mode = "indirect"
         print_info ="full"
         feedback ="false"
@@ -141,7 +141,7 @@
     <module
         class = "Dynamixel"
         name = "NeckEyes"
-    	device  = "/dev/ttyUSB1"
+    	device  = "/dev/ttyUSB0"
         index_mode = "indirect"
         print_info ="minimal"
         feedback ="true"
