@@ -74,6 +74,7 @@ void RandomBlob::Tick()
     }
     randomIndex = (std::rand()%amount);
   }
+  tick_counter++;
 
   //Output and weight
   output_matrix[0][0] = internal_matrix[randomIndex][0];
