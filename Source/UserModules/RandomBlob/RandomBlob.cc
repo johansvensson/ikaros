@@ -72,7 +72,11 @@ void RandomBlob::Tick()
         break;
       }
     }
+    if(amount==0){
+      randomIndex = 0;
+    }else{
     randomIndex = (std::rand()%amount);
+    }
   }
   tick_counter++;
 
