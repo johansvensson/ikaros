@@ -37,10 +37,10 @@
       name = "NerestPixel"
     />
 
-    <!--<module
-      class = "WatchRandom"
-      name = "WatchRandom"
-    />-->
+    <module
+      class = "RandomBlob"
+      name = "RandomBlob"
+    />
 
     <module
       class = "PolarToCartesian"
@@ -50,7 +50,7 @@
     <module
       class = "Arbiter"
       name = "Arbiter"
-      no_of_inputs = "2"
+      no_of_inputs = "3"
     />
 
     <module
@@ -112,15 +112,15 @@
 
     <!-- connections to arbiter -->
     <connection sourcemodule="BlobCreator" source="OUTPUT" targetmodule="NerestPixel" target="INPUT" />
-    <conncetion sourcemodule="BlobCreator" source="OUTPUT" targetmodule="WatchRandom" target="INPUT" />
+    <conncetion sourcemodule="BlobCreator" source="OUTPUT" targetmodule="RandomBlob" target="INPUT" />
 
     <connection sourcemodule="NerestPixel" source="OUTPUT" targetmodule="Arbiter" target="INPUT_1" />
-    <!--<connection sourcemodule="WatchRandom" source="OUTPUT" targetmodule="Arbiter" target="INPUT_2" />-->
-    <connection sourcemodule="WatchSky" source="OUTPUT" targetmodule="Arbiter" target="INPUT_2" />
+    <connection sourcemodule="RandomBlob" source="OUTPUT" targetmodule="Arbiter" target="INPUT_2" />
+    <connection sourcemodule="WatchSky" source="OUTPUT" targetmodule="Arbiter" target="INPUT_3" />
 
     <connection sourcemodule="NerestPixel" source="WEIGHT" targetmodule="Arbiter" target="VALUE_1" />
-    <!--<connection sourcemodule="WatchRandom" source="WEIGHT" targetmodule="Arbiter" target="VALUE_2" />-->
-    <connection sourcemodule="WatchSky" source="WEIGHT" targetmodule="Arbiter" target="VALUE_2" />
+    <connection sourcemodule="RandomBlob" source="WEIGHT" targetmodule="Arbiter" target="VALUE_2" />
+    <connection sourcemodule="WatchSky" source="WEIGHT" targetmodule="Arbiter" target="VALUE_3" />
 
 
     <connection sourcemodule="Arbiter" source="OUTPUT" targetmodule="ArmTester" target="GOAL_POSITION" />
